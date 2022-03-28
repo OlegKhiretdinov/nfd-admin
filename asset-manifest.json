@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/nfd-admin/static/css/main.8a685450.css",
+    "main.js": "/nfd-admin/static/js/main.ece33d06.js",
+    "index.html": "/nfd-admin/index.html",
+    "main.8a685450.css.map": "/nfd-admin/static/css/main.8a685450.css.map",
+    "main.ece33d06.js.map": "/nfd-admin/static/js/main.ece33d06.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8a685450.css",
+    "static/js/main.ece33d06.js"
+  ]
+}
