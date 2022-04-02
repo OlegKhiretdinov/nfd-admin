@@ -1,0 +1,19 @@
+@import "../../styles/const.scss";
+
+.default {
+  padding: 8px 15px;
+  background: $blue;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+}
+
+.reset {
+  background: $warning;
+}
+
+.light {
+  background: #e9ecef;
+  color: $title;
+}

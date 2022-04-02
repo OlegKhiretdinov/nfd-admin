@@ -1,0 +1,21 @@
+@import "../../styles/const.scss";
+
+.default {
+  margin: 8px 0;
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 13px;
+  border: 1px solid #becad6;
+  box-sizing: border-box;
+  border-radius: 4px;
+  color: $black;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 10px;
+  }
+}
