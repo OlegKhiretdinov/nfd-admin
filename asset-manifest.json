@@ -1,13 +1,18 @@
 {
   "files": {
-    "main.css": "/nfd-admin/static/css/main.8a685450.css",
-    "main.js": "/nfd-admin/static/js/main.ece33d06.js",
+    "main.css": "/nfd-admin/static/css/main.41a5464a.css",
+    "main.js": "/nfd-admin/static/js/main.c15e4a25.js",
+    "static/media/Roboto-Medium.ttf": "/nfd-admin/static/media/Roboto-Medium.7429a63c09f79a1760b0.ttf",
+    "static/media/Roboto-Regular.ttf": "/nfd-admin/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
+    "static/media/Roboto-Bold.ttf": "/nfd-admin/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
+    "static/media/Roboto-Light.ttf": "/nfd-admin/static/media/Roboto-Light.8be2d1487420548b3b8d.ttf",
     "index.html": "/nfd-admin/index.html",
-    "main.8a685450.css.map": "/nfd-admin/static/css/main.8a685450.css.map",
-    "main.ece33d06.js.map": "/nfd-admin/static/js/main.ece33d06.js.map"
+    "static/media/logo.svg": "/nfd-admin/static/media/logo.bc4f3ee8fbfa2ba0ccc054519f06dc93.svg",
+    "main.41a5464a.css.map": "/nfd-admin/static/css/main.41a5464a.css.map",
+    "main.c15e4a25.js.map": "/nfd-admin/static/js/main.c15e4a25.js.map"
   },
   "entrypoints": [
-    "static/css/main.8a685450.css",
-    "static/js/main.ece33d06.js"
+    "static/css/main.41a5464a.css",
+    "static/js/main.c15e4a25.js"
   ]
 }
