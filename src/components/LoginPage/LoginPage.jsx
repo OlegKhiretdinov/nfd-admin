@@ -1,9 +1,23 @@
+import { useCallback } from "react"
+import { useDispatch } from "react-redux"
+
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg"
+import { login } from "../../store/authStore"
 import Button from "../Button/Button"
 import Input from "../Input/Input"
 import cls from "./LoginPage.module.scss"
 
 const LoginPage = () => {
+  const dispatch = useDispatch()
+
+  const onFormSubmit = useCallback(
+    (e) => {
+      e.preventDefault()
+      dispatch(login(e.target[0].value, e.target[1].value))
+    },
+    [dispatch]
+  )
+
   return (
     <div className={cls.page}>
       <div className={cls.header}>
@@ -12,14 +26,8 @@ const LoginPage = () => {
       </div>
       <div className={cls.formWrapper}>
         <h2>Вход</h2>
-        <form className={cls.form}>
-          <Input
-            label={"Почта"}
-            id={"mail"}
-            fieldType={"email"}
-            placeholder={"admin@ss.com"}
-            customStyle={cls.input}
-          />
+        <form className={cls.form} onSubmit={onFormSubmit}>
+          <Input label={"Почта"} id={"mail"} customStyle={cls.input} />
           <Input
             label={"Пароль"}
             id={"password"}

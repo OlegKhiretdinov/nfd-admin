@@ -1,7 +1,15 @@
-import LoginPage from "./components/LoginPage/LoginPage"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import AdminPage from "./components/AdminPage/AdminPage"
 
 const App = () => {
-  return <LoginPage />
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/admin" element={<AdminPage />} />
+        <Route exact path="/" element={<Navigate to="/admin" />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App
