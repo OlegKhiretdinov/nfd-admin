@@ -1,8 +1,6 @@
 import { loginRequest } from "../api/request"
 import { setLocalStorageAuthToken } from "../utils/localStorage"
-
-const SET_LOGIN_TOKEN = "SET_LOGIN_TOKEN"
-const SET_LOGIN_ERRORS = "SET_LOGIN_ERRORS"
+import * as types from "./types"
 
 const initialState = {
   token: "",
@@ -11,9 +9,9 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_LOGIN_TOKEN:
+    case types.SET_LOGIN_TOKEN:
       return { ...state, token: action.token }
-    case SET_LOGIN_ERRORS:
+    case types.SET_LOGIN_ERRORS:
       return { ...state, errors: action.errors }
     default:
       return state
@@ -21,12 +19,12 @@ const authReducer = (state = initialState, action) => {
 }
 
 const setLoginErrors = (errors) => ({
-  type: SET_LOGIN_ERRORS,
+  type: types.SET_LOGIN_ERRORS,
   errors,
 })
 
 export const setAuthToken = (token) => ({
-  type: SET_LOGIN_TOKEN,
+  type: types.SET_LOGIN_TOKEN,
   token,
 })
 
