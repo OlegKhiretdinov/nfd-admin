@@ -1,8 +1,7 @@
 import { useCallback } from "react"
 import { useDispatch } from "react-redux"
-
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg"
-import { login } from "../../store/authStore"
+import { login } from "../../store/authStore/actions"
 import Button from "../Button/Button"
 import Input from "../Input/Input"
 import cls from "./LoginPage.module.scss"

@@ -1,7 +1,7 @@
 import LoginPage from "../LoginPage/LoginPage"
 import { getLocalStorageAuthToken } from "../../utils/localStorage"
 import { useDispatch, useSelector } from "react-redux"
-import { setAuthToken } from "../../store/authStore"
+import { setAuthToken } from "../../store/authStore/actions"
 
 const AdminPage = () => {
   const dispatch = useDispatch()
