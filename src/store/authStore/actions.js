@@ -13,13 +13,12 @@ export const setAuthToken = (token) => ({
 })
 
 export const login = (userName, password) => async (dispatch) => {
-  const response = await loginRequest(userName, password)
-
-  if (response.errors) {
-    dispatch(setLoginErrors(response.errors))
-  } else {
-    dispatch(setLoginErrors([]))
+  try {
+    const response = await loginRequest(userName, password)
     setLocalStorageAuthToken(response.access_token)
     dispatch(setAuthToken(response.access_token))
+    dispatch(setLoginErrors(""))
+  } catch {
+    dispatch(setLoginErrors("Неверный логин или пароль"))
   }
 }

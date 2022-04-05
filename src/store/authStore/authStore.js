@@ -2,7 +2,7 @@ import * as types from "./types"
 
 const initialState = {
   token: "",
-  errors: [],
+  errors: "",
 }
 
 const authReducer = (state = initialState, action) => {
