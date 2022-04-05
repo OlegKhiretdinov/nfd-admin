@@ -1,14 +1,14 @@
 import { useCallback } from "react"
-import { useDispatch } from "react-redux"
-
+import { useDispatch, useSelector } from "react-redux"
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg"
-import { login } from "../../store/authStore"
+import { login } from "../../store/authStore/actions"
 import Button from "../Button/Button"
 import Input from "../Input/Input"
 import cls from "./LoginPage.module.scss"
 
 const LoginPage = () => {
   const dispatch = useDispatch()
+  const loginError = useSelector(({ auth }) => auth.errors)
 
   const onFormSubmit = useCallback(
     (e) => {
@@ -27,6 +27,7 @@ const LoginPage = () => {
       <div className={cls.formWrapper}>
         <h2>Вход</h2>
         <form className={cls.form} onSubmit={onFormSubmit}>
+          <div className={cls.errors}>{loginError}</div>
           <Input label={"Почта"} id={"mail"} customStyle={cls.input} />
           <Input
             label={"Пароль"}

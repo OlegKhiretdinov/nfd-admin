@@ -1,0 +1,2 @@
+export const SET_LOGIN_TOKEN = "SET_LOGIN_TOKEN"
+export const SET_LOGIN_ERRORS = "SET_LOGIN_ERRORS"
