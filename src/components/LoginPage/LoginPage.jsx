@@ -21,7 +21,7 @@ const LoginPage = () => {
   return (
     <div className={cls.page}>
       <div className={cls.header}>
-        <Logo />
+        <Logo className={cls.logo} />
         <h1>Need for drive</h1>
       </div>
       <div className={cls.formWrapper}>
