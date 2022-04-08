@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { setAuthToken } from "../../store/authStore/actions"
 import NavigationPanel from "../NavigationPanel/NavigationPanel"
 import cls from "./AdminPage.module.scss"
+import Header from "../Header/Header"
 
 const AdminPage = () => {
   const dispatch = useDispatch()
@@ -20,7 +21,9 @@ const AdminPage = () => {
   return (
     <div className={cls.wrapper}>
       <NavigationPanel />
-      <h1>AdminPage</h1>
+      <div className={cls.main}>
+        <Header />
+      </div>
     </div>
   )
 }
