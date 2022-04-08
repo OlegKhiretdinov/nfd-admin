@@ -1,10 +1,11 @@
 import LoginPage from "../LoginPage/LoginPage"
 import { getLocalStorageAuthToken } from "../../utils/localStorage"
 import { useDispatch, useSelector } from "react-redux"
+import Header from "../Header/Header"
+import Footer from "../Footer/Footer"
 import { setAuthToken } from "../../store/authStore/actions"
 import NavigationPanel from "../NavigationPanel/NavigationPanel"
 import cls from "./AdminPage.module.scss"
-import Header from "../Header/Header"
 
 const AdminPage = () => {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ const AdminPage = () => {
       <NavigationPanel />
       <div className={cls.main}>
         <Header />
+        <Footer />
       </div>
     </div>
   )
