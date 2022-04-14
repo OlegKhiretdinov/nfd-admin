@@ -1,21 +1,33 @@
 {
   "files": {
-    "main.css": "/nfd-admin/static/css/main.a957623d.css",
-    "main.js": "/nfd-admin/static/js/main.a5dc71db.js",
+    "main.css": "/nfd-admin/static/css/main.02fc8d2e.css",
+    "main.js": "/nfd-admin/static/js/main.a65d352d.js",
     "static/media/Roboto-Medium.ttf": "/nfd-admin/static/media/Roboto-Medium.7429a63c09f79a1760b0.ttf",
     "static/media/Roboto-Regular.ttf": "/nfd-admin/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
     "static/media/Roboto-Bold.ttf": "/nfd-admin/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
     "static/media/Roboto-Light.ttf": "/nfd-admin/static/media/Roboto-Light.8be2d1487420548b3b8d.ttf",
+    "static/media/default_car.png": "/nfd-admin/static/media/default_car.73b6b942ad0c42469086.png",
     "static/media/HelveticaRegular.ttf": "/nfd-admin/static/media/HelveticaRegular.31a272d75aa97b0dcb55.ttf",
     "static/media/HelveticaMedium.ttf": "/nfd-admin/static/media/HelveticaMedium.ba7a934abce1756e2543.ttf",
     "static/media/HelveticaBold.ttf": "/nfd-admin/static/media/HelveticaBold.d2d4622394c0e88a8c69.ttf",
+    "static/media/search.svg": "/nfd-admin/static/media/search.c8b5b3af1de2fdaa3efe9097b9e1caf7.svg",
     "index.html": "/nfd-admin/index.html",
-    "static/media/logo.svg": "/nfd-admin/static/media/logo.bc4f3ee8fbfa2ba0ccc054519f06dc93.svg",
-    "main.a957623d.css.map": "/nfd-admin/static/css/main.a957623d.css.map",
-    "main.a5dc71db.js.map": "/nfd-admin/static/js/main.a5dc71db.js.map"
+    "static/media/logo.svg": "/nfd-admin/static/media/logo.1771e533a06a1272599c2f359e971af1.svg",
+    "static/media/change.svg": "/nfd-admin/static/media/change.850cde242ed04a9962e5582f8a02ca9b.svg",
+    "static/media/notifications.svg": "/nfd-admin/static/media/notifications.daf3aac6715248c5579078d5794e5eb9.svg",
+    "static/media/edit.svg": "/nfd-admin/static/media/edit.da857f901f3611a6bb2c67adf91b5fdd.svg",
+    "static/media/select.svg": "/nfd-admin/static/media/select.551085a20b618db60dfab9248ea8125e.svg",
+    "static/media/list.svg": "/nfd-admin/static/media/list.8bd6eb17611fa31df97d2c09b0a6e1b6.svg",
+    "static/media/order.svg": "/nfd-admin/static/media/order.13082c6d5b066cefa7dd74363a7b5d18.svg",
+    "static/media/cancel.svg": "/nfd-admin/static/media/cancel.ebfbf7fc23a4eeda15963f5c613914fc.svg",
+    "static/media/check.svg": "/nfd-admin/static/media/check.5f6c1f540931d71f2ff5.svg",
+    "static/media/enable.svg": "/nfd-admin/static/media/enable.35a8bd90455c6a26240a44fa53938483.svg",
+    "static/media/dropdown.svg": "/nfd-admin/static/media/dropdown.e709e3e8126acd27b6f4998529bcde32.svg",
+    "main.02fc8d2e.css.map": "/nfd-admin/static/css/main.02fc8d2e.css.map",
+    "main.a65d352d.js.map": "/nfd-admin/static/js/main.a65d352d.js.map"
   },
   "entrypoints": [
-    "static/css/main.a957623d.css",
-    "static/js/main.a5dc71db.js"
+    "static/css/main.02fc8d2e.css",
+    "static/js/main.a65d352d.js"
   ]
 }
