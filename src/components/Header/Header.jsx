@@ -18,7 +18,9 @@ const Header = () => {
       <div className={cls.info}>
         <div className={cls.notification}>
           <NotificationsSvg />
-          <div className={cls.count}>2</div>
+          <div className={cls.count}>
+            <span>2</span>
+          </div>
         </div>
         <div className={cls.user}>
           <div

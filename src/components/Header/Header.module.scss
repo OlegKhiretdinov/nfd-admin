@@ -3,6 +3,7 @@
 .wrapper {
   display: flex;
   box-shadow: 0px 2.5px 9.5px rgba(90, 97, 105, 0.12);
+  z-index: 10;
 }
 
 .search {
@@ -45,9 +46,12 @@
   border-radius: 50%;
   background: $warning;
   color: white;
-  font-size: 9px;
-  line-height: 14px;
   font-weight: bold;
+
+  span {
+    font-size: 9px;
+    line-height: 14px;
+  }
 }
 
 .user {
@@ -66,4 +70,10 @@
   padding: 0 13px;
   min-width: 70px;
   font-size: 15px;
+}
+
+@media all and (max-width: 1439px) {
+  .wrapper {
+    padding-left: 30px;
+  }
 }

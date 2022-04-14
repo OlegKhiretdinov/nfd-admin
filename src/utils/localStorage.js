@@ -1,7 +1,8 @@
-export const setLocalStorageAuthToken = (token) =>
-  localStorage.setItem("token", token)
+export const setLocalStorageData = (fieldName, token) =>
+  localStorage.setItem(fieldName, token)
 
-export const getLocalStorageAuthToken = () => localStorage.getItem("token")
+export const getLocalStorageData = (fieldName) =>
+  localStorage.getItem(fieldName)
 
-export const removeLocalStorageAuthToken = () =>
-  localStorage.removeItem("token")
+export const removeLocalStorageData = (fieldName) =>
+  localStorage.removeItem(fieldName)

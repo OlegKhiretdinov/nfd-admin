@@ -1,0 +1,22 @@
+@import "../../styles/const.scss";
+
+.table {
+  width: max-content;
+  padding: 8px 16px;
+  overflow: scroll;
+}
+
+.row {
+  margin: 8px 0;
+}
+
+.cell {
+  padding: 5px 8px;
+  flex-shrink: 0;
+  background: white;
+}
+
+.firstColumn {
+  position: sticky;
+  left: 0px;
+}
