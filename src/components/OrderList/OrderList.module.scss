@@ -1,0 +1,133 @@
+@import "../../styles/const.scss";
+
+.filters {
+  padding: 16px 21px 14px;
+  border-bottom: 1px solid $gray_light;
+}
+
+.wrapper {
+  background: #ffffff;
+  box-shadow: 0px 2px 0px rgba(90, 97, 105, 0.11),
+    0px 4px 8px rgba(90, 97, 105, 0.12), 0px 10px 10px rgba(90, 97, 105, 0.06),
+    0px 7px 70px rgba(90, 97, 105, 0.1);
+  border-radius: 9px;
+}
+
+.footer {
+  padding: 21px;
+  border-top: 1px solid $gray_light;
+
+  div {
+    margin: 0 auto;
+  }
+}
+
+.thumbnail {
+  width: 140px;
+  height: 63px;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.dark {
+  color: $black;
+}
+
+.price {
+  font-size: 24px;
+  line-height: 28px;
+  color: $black;
+}
+
+.actions {
+  font-size: 11px;
+  display: flex;
+  button {
+    flex-shrink: 0;
+    padding: 8px;
+    border: 1px solid #decad6;
+    border-radius: 0px;
+    background: #ffffff;
+    outline: none;
+    color: $text;
+
+    &:first-of-type {
+      border-radius: 4px 0 0 4px;
+      border-right: none;
+    }
+    &:last-of-type {
+      border-radius: 0 4px 4px 0;
+      border-left: none;
+    }
+    span {
+      margin-left: 5px;
+    }
+  }
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  div {
+    flex-shrink: 0;
+  }
+}
+
+// pagination
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: $blue;
+  a,
+  span {
+    margin-right: 7px;
+  }
+  .current {
+    min-width: 19px;
+    text-align: center;
+    padding: 2px;
+    box-sizing: border-box;
+    border-radius: 9px;
+    background: $blue;
+    color: white;
+  }
+}
+
+// filters
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fieldWrapper {
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+}
+
+.fieldIcon {
+  position: absolute;
+  top: 11px;
+  right: 7px;
+}
+
+.filterField {
+  padding: 7px 19px 6px 14px;
+  width: 110px;
+  border: 1px solid #becad6;
+  border-radius: 4px;
+  color: #868e96;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.button {
+  margin-left: auto;
+  font-size: 11px;
+  line-height: 13px;
+}
