@@ -27,9 +27,7 @@ const Table = (props) => {
 
   return (
     <table className={cls.table}>
-      {/* <div key={"header"}>{tableHeader}</div> */}
       <tr>{tableHeader}</tr>
-      {/* <div>{tableBody}</div> */}
       {tableBody}
     </table>
   )
