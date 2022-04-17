@@ -1,0 +1,76 @@
+@import "../../styles/const.scss";
+
+//filter
+.filters {
+  padding: 16px 21px 14px;
+  border-bottom: 1px solid $gray_light;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fieldWrapper {
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+}
+
+.fieldIcon {
+  position: absolute;
+  top: 11px;
+  right: 7px;
+}
+
+.filterField {
+  padding: 7px 19px 6px 14px;
+  width: 110px;
+  border: 1px solid #becad6;
+  border-radius: 4px;
+  color: #868e96;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.buttons {
+  margin-left: auto;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.button {
+  margin-left: 15px;
+}
+
+// pagination
+
+.footer {
+  padding: 21px;
+  border-top: 1px solid $gray_light;
+
+  div {
+    margin: 0 auto;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: $blue;
+  a,
+  span {
+    margin-right: 7px;
+  }
+  .current {
+    min-width: 19px;
+    text-align: center;
+    padding: 2px;
+    box-sizing: border-box;
+    border-radius: 9px;
+    background: $blue;
+    color: white;
+  }
+}
