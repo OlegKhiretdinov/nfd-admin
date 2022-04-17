@@ -24,6 +24,11 @@ const navigationConfig = [
     link: "/admin/orders",
     icon: <OrderSvg />,
   },
+  {
+    title: "Пункты выдачи",
+    link: "/admin/points",
+    icon: <OrderSvg />,
+  },
 ]
 
 const NavigationPanel = () => {
