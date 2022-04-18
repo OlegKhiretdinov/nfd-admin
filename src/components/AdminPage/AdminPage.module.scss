@@ -1,0 +1,21 @@
+@import "../../styles/const.scss";
+
+.wrapper {
+  display: flex;
+  margin: auto;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.content {
+  height: 100%;
+  padding: 25px;
+  background: $backgroundAdmin;
+}
