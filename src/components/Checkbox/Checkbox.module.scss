@@ -1,0 +1,38 @@
+@import "../../styles/const.scss";
+
+.checkbox {
+  display: inline-block;
+  margin-bottom: 6px;
+
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + label {
+      .customCheckbox {
+        background: no-repeat center url("../../assets/icons/check.svg");
+        background-color: $blue;
+      }
+    }
+  }
+
+  label {
+    color: #495057;
+  }
+}
+
+.customCheckbox {
+  margin: 0px;
+  margin-right: 10px;
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 2px solid $blue;
+  box-sizing: border-box;
+  border-radius: 2px;
+  color: white;
+  vertical-align: middle;
+}

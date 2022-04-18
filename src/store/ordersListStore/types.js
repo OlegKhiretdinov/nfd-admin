@@ -1,0 +1,3 @@
+export const SET_OFFSET = "SET_OFFSET"
+export const SET_ORDERS_LIST = "SET_ORDERS_LIST"
+export const SET_PAGE_COUNT = "SET_PAGE_COUNT"
