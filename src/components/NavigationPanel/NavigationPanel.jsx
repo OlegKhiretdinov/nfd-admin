@@ -25,7 +25,7 @@ const navigationConfig = [
     icon: <OrderSvg />,
   },
   {
-    title: "Пункты выдачи",
+    title: "Пункты проката",
     link: "/admin/points",
     icon: <OrderSvg />,
   },
