@@ -1,0 +1,3 @@
+export const SET_CARS_LIST = "SET_CARS_LIST"
+export const SET_CARS_OFFSET = "SET_CARS_OFFSET"
+export const SET_CARS_PAGE_COUNT = "SET_CARS_PAGE_COUNT"

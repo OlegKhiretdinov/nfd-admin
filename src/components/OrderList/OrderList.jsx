@@ -134,7 +134,7 @@ const OrderList = () => {
 
   return (
     <>
-      <h1>Заказы</h1>
+      <h1 className={cls.title}>Заказы</h1>
       <div className={cls.wrapper}>
         <div className={cls.filters}>
           <form className={cls.form}>
