@@ -4,11 +4,14 @@ import cls from "./Table.module.scss"
 const Table = (props) => {
   const { columnConfig, list } = props
 
-  const tableHeader = columnConfig.map((item, index) => (
-    <th className={cls.th} key={index}>
-      {item.columnHeader}
-    </th>
-  ))
+  const tableHeader = columnConfig.map((item, index) => {
+    const classes = classNames(cls.th, { [cls.firstColumn]: index === 0 })
+    return (
+      <th className={classes} key={index}>
+        {item.columnHeader}
+      </th>
+    )
+  })
 
   const rowRender = (rowContent) => (
     <tr className={cls.row} key={rowContent.id}>

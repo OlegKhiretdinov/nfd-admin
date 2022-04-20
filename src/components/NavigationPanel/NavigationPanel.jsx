@@ -16,7 +16,7 @@ const navigationConfig = [
   },
   {
     title: "Список авто",
-    link: "url2",
+    link: "/admin/cars",
     icon: <ListSvg />,
   },
   {
