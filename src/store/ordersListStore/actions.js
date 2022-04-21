@@ -1,10 +1,10 @@
 import * as type from "./types"
-import { tableOrder } from "../../api/request"
+import { requestTableData } from "../../api/request"
 import { tableRowLimit } from "../../utils/const"
 
-export const setOffset = (offset) => ({
-  type: type.SET_OFFSET,
-  offset,
+export const setOffset = (orderOffset) => ({
+  type: type.SET_ORDERS_OFFSET,
+  orderOffset,
 })
 
 const setOrdersListData = (ordersList) => ({
@@ -12,16 +12,15 @@ const setOrdersListData = (ordersList) => ({
   ordersList,
 })
 
-const setPageCount = (pageCount) => ({
-  type: type.SET_PAGE_COUNT,
-  pageCount,
+const setOrderPageCount = (orderPageCount) => ({
+  type: type.SET_ORDERS_PAGE_COUNT,
+  orderPageCount,
 })
 
 export const setOrdersList =
-  (token, offset = 20, filters = "") =>
+  (token, table, offset = 20, filters = "") =>
   async (dispatch) => {
-    const response = await tableOrder(token, offset, filters)
+    const response = await requestTableData(token, table, offset, filters)
     dispatch(setOrdersListData(response.data))
-    dispatch(setPageCount(Math.ceil(response.count / tableRowLimit)))
-    setOrdersListData(response.data)
+    dispatch(setOrderPageCount(Math.ceil(response.count / tableRowLimit)))
   }

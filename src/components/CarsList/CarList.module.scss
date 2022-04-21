@@ -1,0 +1,102 @@
+@import "../../styles/const.scss";
+
+.title {
+  margin-bottom: 28px;
+}
+
+.wrapper {
+  background: #ffffff;
+  box-shadow: 0px 2px 0px rgba(90, 97, 105, 0.11),
+    0px 4px 8px rgba(90, 97, 105, 0.12), 0px 10px 10px rgba(90, 97, 105, 0.06),
+    0px 7px 70px rgba(90, 97, 105, 0.1);
+  border-radius: 9px;
+}
+
+.thumbnail {
+  width: 140px;
+  height: 63px;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.description {
+  max-width: 300px;
+  overflow: hidden;
+}
+
+//filter
+.filters {
+  padding: 16px 21px 14px;
+  border-bottom: 1px solid $gray_light;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fieldWrapper {
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+}
+
+.fieldIcon {
+  position: absolute;
+  top: 11px;
+  right: 7px;
+}
+
+.filterField {
+  padding: 7px 19px 6px 14px;
+  width: 110px;
+  border: 1px solid #becad6;
+  border-radius: 4px;
+  color: #868e96;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.buttons {
+  margin-left: auto;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.button {
+  margin-left: 15px;
+}
+
+// pagination
+
+.footer {
+  padding: 21px;
+  border-top: 1px solid $gray_light;
+
+  div {
+    margin: 0 auto;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: $blue;
+  a,
+  span {
+    margin-right: 7px;
+  }
+  .current {
+    min-width: 19px;
+    text-align: center;
+    padding: 2px;
+    box-sizing: border-box;
+    border-radius: 9px;
+    background: $blue;
+    color: white;
+  }
+}

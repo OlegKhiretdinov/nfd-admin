@@ -1,0 +1,3 @@
+export const SET_POINTS_LIST = "SET_POINTS_LIST"
+export const SET_POINTS_OFFSET = "SET_OFFSET"
+export const SET_POINTS_PAGE_COUNT = "SET_PAGE_COUNT"
