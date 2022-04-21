@@ -10,8 +10,15 @@
   margin: 8px 0;
 }
 
+.th {
+  padding: 10px 20px;
+  color: $title;
+  text-align: left;
+  background: white;
+}
+
 .cell {
-  padding: 5px 8px;
+  padding: 10px 20px;
   flex-shrink: 0;
   background: white;
 }
@@ -19,4 +26,5 @@
 .firstColumn {
   position: sticky;
   left: 0px;
+  color: $title;
 }

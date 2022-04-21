@@ -16,10 +16,12 @@ import { dateFormat } from "../../utils/const"
 const OrderList = () => {
   const dispatch = useDispatch()
 
-  const { pageCount, ordersList } = useSelector(({ ordersList }) => ordersList)
+  const { orderPageCount, ordersList } = useSelector(
+    ({ ordersList }) => ordersList
+  )
 
   useEffect(() => {
-    dispatch(setOrdersList(getLocalStorageData("token")))
+    dispatch(setOrdersList(getLocalStorageData("token"), "order"))
   }, [])
 
   const columnConfig = [
@@ -132,7 +134,7 @@ const OrderList = () => {
 
   return (
     <>
-      <h1>Заказы</h1>
+      <h1 className={cls.title}>Заказы</h1>
       <div className={cls.wrapper}>
         <div className={cls.filters}>
           <form className={cls.form}>
@@ -167,7 +169,7 @@ const OrderList = () => {
             <span className={cls.current}>5</span>
             <a href="#">6</a>
             <span>...</span>
-            <a href="#">{pageCount || null}</a>
+            <a href="#">{orderPageCount || null}</a>
             <a href="#">{"»"}</a>
           </div>
         </div>

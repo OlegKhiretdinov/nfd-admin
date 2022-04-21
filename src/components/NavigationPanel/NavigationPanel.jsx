@@ -16,12 +16,17 @@ const navigationConfig = [
   },
   {
     title: "Список авто",
-    link: "url2",
+    link: "/admin/cars",
     icon: <ListSvg />,
   },
   {
     title: "Заказы",
     link: "/admin/orders",
+    icon: <OrderSvg />,
+  },
+  {
+    title: "Пункты проката",
+    link: "/admin/points",
     icon: <OrderSvg />,
   },
 ]
