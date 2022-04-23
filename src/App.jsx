@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import AdminPage from "./components/AdminPage/AdminPage"
+import CarProfile from "./components/CarProfile/CarProfile"
 import CarsList from "./components/CarsList/CarsList"
 import ErrorPage from "./components/ErrorPage/ErrorPage"
 import OrderList from "./components/OrderList/OrderList"
@@ -15,6 +16,8 @@ const App = () => {
           <Route path="orders" element={<OrderList />} />
           <Route path="points" element={<PointList />} />
           <Route path="cars" element={<CarsList />} />
+          <Route path="car-profile/" element={<CarProfile />} />
+          <Route path="car-profile/:id" element={<CarProfile />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" />} />

@@ -2,9 +2,10 @@ import classNames from "classnames"
 import cls from "./Input.module.scss"
 
 const Input = (props) => {
-  const { value, label, id, fieldType, customStyle, ...rest } = props
+  const { value, label, id, fieldType, customStyle, error, ...rest } = props
   const classes = classNames(cls.wrapper, {
     [customStyle]: !!customStyle,
+    [cls.error]: !!error,
   })
   return (
     <div className={classes}>
@@ -16,6 +17,7 @@ const Input = (props) => {
         type={fieldType}
         {...rest}
       />
+      {error && <span className={cls.errorText}>{error}</span>}
     </div>
   )
 }
