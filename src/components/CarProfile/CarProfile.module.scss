@@ -96,7 +96,7 @@
   }
   .fieldStyle {
     width: 320px;
-    margin: 0 21px 28px 0;
+    margin: 0 21px 20px 0;
 
     label {
       color: $black;
@@ -107,7 +107,12 @@
     display: flex;
     width: 320px;
     align-items: flex-end;
+    margin-bottom: 8px;
     color: $black;
+  }
+
+  .colorsFieldInput {
+    flex-grow: 1;
   }
 
   .plusButton {

@@ -102,7 +102,10 @@ const CarProfile = () => {
             />
             <div className={cls.colors}>
               <div className={cls.colorsField}>
-                <Input label={"Доступные цвета"} />
+                <Input
+                  label={"Доступные цвета"}
+                  customStyle={cls.colorsFieldInput}
+                />
                 <button
                   className={cls.plusButton}
                   onClick={handleSetColorsClick}
