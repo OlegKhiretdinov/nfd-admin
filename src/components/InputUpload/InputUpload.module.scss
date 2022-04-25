@@ -1,0 +1,38 @@
+@import "../../styles/const.scss";
+
+.invisible {
+  height: 1px;
+  width: 1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.input {
+  display: flex;
+  width: 232px;
+  height: 27px;
+  background: #ffffff;
+  border: 1px solid #becad6;
+  border-radius: 4px;
+  overflow: hidden;
+  line-height: 27px;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  color: #495057;
+}
+
+.field {
+  padding-left: 15px;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.button {
+  width: 65px;
+  height: 27px;
+  flex-shrink: 0;
+  background: #e9ecef;
+  border-left: 1px solid #becad6;
+  text-align: center;
+}
