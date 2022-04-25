@@ -11,7 +11,7 @@ import MenuTrigger from "../MenuTrigger/MenuTriger"
 const navigationConfig = [
   {
     title: "Карточка автомобиля",
-    link: "url1",
+    link: "/admin/car-profile",
     icon: <EditSvg />,
   },
   {
