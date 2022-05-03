@@ -17,7 +17,7 @@ const App = () => {
           <Route path="points" element={<PointList />} />
           <Route path="cars" element={<CarsList />} />
           <Route path="car-profile/" element={<CarProfile />} />
-          <Route path="car-profile/:id" element={<CarProfile />} />
+          <Route path="car-profile/:carId" element={<CarProfile />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" />} />

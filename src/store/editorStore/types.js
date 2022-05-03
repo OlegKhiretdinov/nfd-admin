@@ -1,0 +1,1 @@
+export const SET_ENTITY_DATA = "SET_ENTITY_DATA"
