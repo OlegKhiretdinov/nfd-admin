@@ -12,6 +12,8 @@ import { getLocalStorageData } from "../../utils/localStorage"
 import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import defaultCar from "../../assets/img/default_car.png"
 import cls from "./CarProfile.module.scss"
+import { setMessage, setMessageType } from "../../store/messageStore/actions"
+import { TMessageType } from "../../utils/const"
 
 const CarProfile = () => {
   const dispatch = useDispatch()
@@ -150,10 +152,17 @@ const CarProfile = () => {
     }
 
     const method = carId ? "PUT" : "POST"
+
     requestEditEntity(token, "car", method, data, carId)
       .then((response) => response.json())
       .then((data) => {
         !carId && navigate(`/admin/car-profile/${data.data.id}`)
+        dispatch(setMessage("Успех! Машина сохранена"))
+        dispatch(setMessageType(TMessageType.success))
+      })
+      .catch(() => {
+        dispatch(setMessage("Ошибка! Данные не сохранились"))
+        dispatch(setMessageType(TMessageType.error))
       })
   }
 
@@ -163,6 +172,14 @@ const CarProfile = () => {
 
   const handleDeleteCar = () => {
     requestDeleteEntity(token, "car", carId)
+      .then(() => {
+        dispatch(setMessage("Успех! Машина удалена"))
+        dispatch(setMessageType(TMessageType.success))
+      })
+      .catch(() => {
+        dispatch(setMessage("Ошибка! Не удалось удалить"))
+        dispatch(setMessageType(TMessageType.error))
+      })
     navigate("/admin/car-profile")
   }
 
