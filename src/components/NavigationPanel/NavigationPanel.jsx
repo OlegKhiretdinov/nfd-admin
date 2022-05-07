@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import classNames from "classnames"
 import { getScreenType } from "../../utils/utils"
 import cls from "./NavigationPanel.module.scss"
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg"
@@ -46,6 +47,9 @@ const NavigationPanel = () => {
     }
   }, [handelResize])
 
+  const getLinkClass = (isActive) =>
+    classNames(cls.link, { [cls.activeLink]: isActive })
+
   const navPanel = useMemo(
     () => (
       <div className={cls.wrapper}>
@@ -56,10 +60,16 @@ const NavigationPanel = () => {
         <div>
           {navigationConfig.map((item) => (
             <div key={item.link}>
-              <Link className={cls.link} to={item.link}>
+              <NavLink
+                className={({ isActive }) => getLinkClass(isActive)}
+                to={item.link}
+                onClick={() => {
+                  setIsShowMenu(false)
+                }}
+              >
                 {item.icon}
                 {item.title}
-              </Link>
+              </NavLink>
             </div>
           ))}
         </div>

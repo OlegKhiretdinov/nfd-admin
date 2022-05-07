@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Input from "../Input/Input"
 import Button from "../Button/Button"
 import InputUpload from "../InputUpload/InputUpload"
@@ -9,7 +9,7 @@ import Checkbox from "../Checkbox/Checkbox"
 import { getEditorData, setEditorData } from "../../store/editorStore/actions"
 import { setCarTypes } from "../../store/carTypesStore/action"
 import { getLocalStorageData } from "../../utils/localStorage"
-import { requestEditEntity } from "../../api/request"
+import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import defaultCar from "../../assets/img/default_car.png"
 import cls from "./CarProfile.module.scss"
 
@@ -18,17 +18,22 @@ const CarProfile = () => {
   const [{ editorData }, { carTypes }] = useSelector(
     ({ editorStore, carTypesStore }) => [editorStore, carTypesStore]
   )
+
+  const navigate = useNavigate()
   const { carId } = useParams()
+
   const token = getLocalStorageData("token")
 
   const [isEditable, setIsEditable] = useState(false)
 
   const [preview, setPreview] = useState()
-  const [description, setDescription] = useState("")
-  const [model, setModel] = useState("")
-  const [typeCar, setTypeCar] = useState("")
-  const [minPrice, setMinPrice] = useState("")
-  const [maxPrice, setMaxPrice] = useState("")
+  const [description, setDescription] = useState()
+  const [model, setModel] = useState()
+  const [typeCar, setTypeCar] = useState()
+  const [number, setNumber] = useState()
+  const [tank, setTank] = useState()
+  const [minPrice, setMinPrice] = useState()
+  const [maxPrice, setMaxPrice] = useState()
   const [colors, setColors] = useState([])
 
   useEffect(() => {
@@ -36,6 +41,7 @@ const CarProfile = () => {
       dispatch(getEditorData(token, "car", carId))
     } else {
       dispatch(setEditorData({}))
+      resetState()
     }
   }, [carId])
 
@@ -43,12 +49,30 @@ const CarProfile = () => {
     carTypes.length === 0 && dispatch(setCarTypes(token, "category"))
   }, [])
 
-  if (!colors.length && editorData.colors?.length) {
-    setColors(editorData.colors)
+  const setInitialState = () => {
+    setModel(editorData?.name)
+    setDescription(editorData.description)
+    setNumber(editorData.number)
+    setTank(editorData.tank)
+    setMinPrice(editorData.priceMin)
+    setMaxPrice(editorData.priceMax)
+    setColors(editorData.colors || [])
+    setTypeCar(editorData.categoryId?.id)
   }
 
-  if (!typeCar && editorData.categoryId?.id) {
-    setTypeCar(editorData.categoryId?.id)
+  useEffect(() => {
+    setInitialState()
+  }, [editorData])
+
+  const resetState = () => {
+    setTypeCar(0)
+    setDescription("")
+    setModel("")
+    setMinPrice("")
+    setMaxPrice("")
+    setColors([])
+    setNumber("")
+    setTank("")
   }
 
   const handleChangeDescription = useCallback((e) => {
@@ -80,8 +104,27 @@ const CarProfile = () => {
     setMaxPrice(e.target.value)
   }, [])
 
-  const handleUpload = (e) => {
-    setPreview(e.target.files[0])
+  const handleChangeNumber = useCallback((e) => {
+    setNumber(e.target.value)
+  }, [])
+
+  const handleChangeTank = useCallback((e) => {
+    setTank(e.target.value)
+  }, [])
+
+  const handleUpload = async (e) => {
+    const file = e.target.files[0]
+
+    const reader = new FileReader()
+    await reader.readAsDataURL(file)
+    reader.onload = () => {
+      setPreview({
+        path: reader.result,
+        size: file.size,
+        originalname: file.name,
+        mimetype: file.type,
+      })
+    }
   }
 
   const handleSelectColor = (e) => {
@@ -92,18 +135,14 @@ const CarProfile = () => {
   }
 
   const updateCarInfo = () => {
-    const thumbnail = {
-      size: preview.size,
-      originalname: preview.name,
-      mimetype: preview.type,
-      path: preview.webkitRelativePath,
-    }
     const data = {
-      priceMax: minPrice || editorData.priceMin,
-      priceMin: maxPrice || editorData.priceMax,
-      name: model || editorData.name,
-      thumbnail,
-      description: description || editorData.description,
+      priceMax: maxPrice,
+      priceMin: minPrice,
+      name: model,
+      number: number,
+      tank: tank,
+      thumbnail: preview,
+      description: description,
       categoryId: {
         id: typeCar,
       },
@@ -112,6 +151,24 @@ const CarProfile = () => {
 
     const method = carId ? "PUT" : "POST"
     requestEditEntity(token, "car", method, data, carId)
+      .then((response) => response.json())
+      .then((data) => {
+        !carId && navigate(`/admin/car-profile/${data.data.id}`)
+      })
+  }
+
+  const handleResetData = () => {
+    carId ? setInitialState() : resetState()
+  }
+
+  const handleDeleteCar = () => {
+    requestDeleteEntity(token, "car", carId)
+    navigate("/admin/car-profile")
+  }
+
+  const getTypeName = (id) => {
+    const carType = carTypes.find((type) => type.id === id)
+    return carType?.name
   }
 
   return (
@@ -123,16 +180,14 @@ const CarProfile = () => {
             <img
               src={
                 preview
-                  ? URL.createObjectURL(preview)
+                  ? preview.path
                   : editorData.thumbnail?.path || defaultCar
               }
             />
           </div>
           <div>
-            <h3 className={cls.modelName}>{editorData.name || model}</h3>
-            <p className={cls.modelType}>
-              {editorData.categoryId?.name || typeCar}
-            </p>
+            <h3 className={cls.modelName}>{model}</h3>
+            <p className={cls.modelType}>{getTypeName(typeCar)}</p>
           </div>
           <div className={cls.uploadField}>
             <InputUpload fileName={preview?.name} onChange={handleUpload} />
@@ -145,7 +200,7 @@ const CarProfile = () => {
             {isEditable ? (
               <textarea
                 autoFocus={true}
-                value={description || editorData.description}
+                value={description}
                 onChange={handleChangeDescription}
                 className={cls.textEditMode}
                 placeholder="Введите описание"
@@ -174,18 +229,19 @@ const CarProfile = () => {
             <Input
               label={"Модель автомобиля"}
               customStyle={cls.fieldStyle}
-              value={model || editorData.name}
+              value={model}
               onChange={handleChangeModel}
             />
             <div className={`${cls.selectWrapper} ${cls.fieldStyle}`}>
               <span>Тип автомобиля</span>
               <select
                 className={cls.select}
-                placeholder="Выберите тип"
+                defaultValue={0}
                 onChange={handleChangeTypeCar}
               >
+                <option value={0}>Выберите тип</option>
                 {carTypes?.map((type) => {
-                  const currentTypeId = typeCar.id || editorData.categoryId?.id
+                  const currentTypeId = typeCar
                   return (
                     <option
                       value={type.id}
@@ -199,15 +255,27 @@ const CarProfile = () => {
               </select>
             </div>
             <Input
+              label={"Номер"}
+              customStyle={cls.fieldStyle}
+              value={number}
+              onChange={handleChangeNumber}
+            />
+            <Input
+              label={"Топливо"}
+              customStyle={cls.fieldStyle}
+              value={tank}
+              onChange={handleChangeTank}
+            />
+            <Input
               label={"Минимальная цена"}
               customStyle={cls.fieldStyle}
-              value={minPrice || editorData.priceMin}
+              value={minPrice}
               onChange={handleChangeMinPrice}
             />
             <Input
               label={"Максимальная цена"}
               customStyle={cls.fieldStyle}
-              value={maxPrice || editorData.priceMax}
+              value={maxPrice}
               onChange={handleChangeMaxPrice}
             />
             <div className={cls.colors}>
@@ -224,17 +292,18 @@ const CarProfile = () => {
                   <span>+</span>
                 </button>
               </div>
-              {colors.map((color) => (
-                <div key={color}>
-                  <Checkbox
-                    checked={true}
-                    id={color}
-                    label={color}
-                    onChange={handleSelectColor}
-                    value={color}
-                  />
-                </div>
-              ))}
+              {colors &&
+                colors.map((color) => (
+                  <div key={color}>
+                    <Checkbox
+                      checked={true}
+                      id={color}
+                      label={color}
+                      onChange={handleSelectColor}
+                      value={color}
+                    />
+                  </div>
+                ))}
             </div>
           </div>
           <div className={cls.footer}>
@@ -243,11 +312,12 @@ const CarProfile = () => {
               customStyle={cls.button}
               onClick={updateCarInfo}
             />
-            <Button text={"Отменить"} type="light" />
+            <Button text={"Отменить"} type="light" onClick={handleResetData} />
             <Button
               text={"Удалить"}
               type="reset"
               customStyle={cls.rightButton}
+              onClick={handleDeleteCar}
             />
           </div>
         </div>

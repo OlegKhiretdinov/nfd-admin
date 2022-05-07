@@ -52,20 +52,12 @@ export const requestEditEntity = (token, table, method, data, id) => {
   })
 }
 
-export const requestAddEntity = (token, table, method, data, id) => {
-  return fetch(`${baseUrl}db/${table}/${id ? id : ""}`, {
-    method,
+export const requestDeleteEntity = (token, table, id) => {
+  return fetch(`${baseUrl}db/${table}/${id}`, {
+    method: "DELETE",
     headers: {
       ...headers,
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(data),
-  })
-}
-
-export const requestDeleteEntity = (table, id) => {
-  return fetch(`${baseUrl}db/${table}/${id}`, {
-    method: "DELETE",
-    headers,
   })
 }

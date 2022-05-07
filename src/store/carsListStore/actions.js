@@ -18,7 +18,7 @@ const setCarsPageCount = (carsPageCount) => ({
 })
 
 export const setCarsList =
-  (token, table, offset = 0, filters = "") =>
+  (token, table, offset = 75, filters = "") =>
   async (dispatch) => {
     const response = await requestTableData(token, table, offset, filters)
     dispatch(setCarsListData(response.data))
