@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nfd-admin/static/css/main.55bd5f32.css",
-    "main.js": "/nfd-admin/static/js/main.32d95a0f.js",
+    "main.css": "/nfd-admin/static/css/main.cf4deedf.css",
+    "main.js": "/nfd-admin/static/js/main.aa87db53.js",
     "static/media/Roboto-Medium.ttf": "/nfd-admin/static/media/Roboto-Medium.7429a63c09f79a1760b0.ttf",
     "static/media/Roboto-Regular.ttf": "/nfd-admin/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
     "static/media/Roboto-Bold.ttf": "/nfd-admin/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
@@ -20,14 +20,16 @@
     "static/media/list.svg": "/nfd-admin/static/media/list.8bd6eb17611fa31df97d2c09b0a6e1b6.svg",
     "static/media/order.svg": "/nfd-admin/static/media/order.13082c6d5b066cefa7dd74363a7b5d18.svg",
     "static/media/cancel.svg": "/nfd-admin/static/media/cancel.ebfbf7fc23a4eeda15963f5c613914fc.svg",
+    "static/media/close.svg": "/nfd-admin/static/media/close.22d6c89da980f6ed397b6395a7e5f0c3.svg",
     "static/media/check.svg": "/nfd-admin/static/media/check.5f6c1f540931d71f2ff5.svg",
     "static/media/enable.svg": "/nfd-admin/static/media/enable.35a8bd90455c6a26240a44fa53938483.svg",
+    "static/media/success.svg": "/nfd-admin/static/media/success.3579bfb87cebc503bade29a80bc40826.svg",
     "static/media/dropdown.svg": "/nfd-admin/static/media/dropdown.e709e3e8126acd27b6f4998529bcde32.svg",
-    "main.55bd5f32.css.map": "/nfd-admin/static/css/main.55bd5f32.css.map",
-    "main.32d95a0f.js.map": "/nfd-admin/static/js/main.32d95a0f.js.map"
+    "main.cf4deedf.css.map": "/nfd-admin/static/css/main.cf4deedf.css.map",
+    "main.aa87db53.js.map": "/nfd-admin/static/js/main.aa87db53.js.map"
   },
   "entrypoints": [
-    "static/css/main.55bd5f32.css",
-    "static/js/main.32d95a0f.js"
+    "static/css/main.cf4deedf.css",
+    "static/js/main.aa87db53.js"
   ]
 }
