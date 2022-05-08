@@ -5,6 +5,7 @@ import CarsList from "./components/CarsList/CarsList"
 import ErrorPage from "./components/ErrorPage/ErrorPage"
 import OrderList from "./components/OrderList/OrderList"
 import PointList from "./components/PointList/PointList"
+import PointProfile from "./components/PointProfile/PointProfile"
 
 const App = () => {
   return (
@@ -17,7 +18,9 @@ const App = () => {
           <Route path="points" element={<PointList />} />
           <Route path="cars" element={<CarsList />} />
           <Route path="car-profile/" element={<CarProfile />} />
-          <Route path="car-profile/:id" element={<CarProfile />} />
+          <Route path="car-profile/:carId" element={<CarProfile />} />
+          <Route path="point-profile/" element={<PointProfile />} />
+          <Route path="point-profile/:pointId" element={<PointProfile />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" />} />

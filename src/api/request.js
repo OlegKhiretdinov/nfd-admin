@@ -30,3 +30,34 @@ export const requestTableData = (token, table, offset) => {
     }
   ).then((response) => response.json())
 }
+
+export const requestGetEntity = (token, table, id) => {
+  return fetch(`${baseUrl}db/${table}/${id ? id : ""}`, {
+    method: "GET",
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => response.json())
+}
+
+export const requestEditEntity = (token, table, method, data, id) => {
+  return fetch(`${baseUrl}db/${table}/${id ? id : ""}`, {
+    method,
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  })
+}
+
+export const requestDeleteEntity = (token, table, id) => {
+  return fetch(`${baseUrl}db/${table}/${id}`, {
+    method: "DELETE",
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+  })
+}

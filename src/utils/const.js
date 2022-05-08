@@ -6,3 +6,8 @@ export const dateFormat = {
   hour: "numeric",
   minute: "numeric",
 }
+
+export const TMessageType = {
+  success: "success",
+  error: "error",
+}

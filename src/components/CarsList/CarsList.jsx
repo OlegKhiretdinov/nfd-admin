@@ -7,6 +7,7 @@ import { getLocalStorageData } from "../../utils/localStorage"
 import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import defaultCar from "../../assets/img/default_car.png"
 import cls from "./CarList.module.scss"
+import { Link } from "react-router-dom"
 
 const CarsList = () => {
   const dispatch = useDispatch()
@@ -21,7 +22,9 @@ const CarsList = () => {
     {
       key: "name",
       columnHeader: "Название",
-      contentRender: (item) => item.name,
+      contentRender: (item) => (
+        <Link to={`/admin/car-profile/${item.id}`}>{item.name}</Link>
+      ),
     },
     {
       key: "priceMax",
