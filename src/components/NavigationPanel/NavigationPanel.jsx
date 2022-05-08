@@ -11,9 +11,9 @@ import MenuTrigger from "../MenuTrigger/MenuTriger"
 
 const navigationConfig = [
   {
-    title: "Карточка автомобиля",
-    link: "/admin/car-profile",
-    icon: <EditSvg />,
+    title: "Заказы",
+    link: "/admin/orders",
+    icon: <OrderSvg />,
   },
   {
     title: "Список авто",
@@ -21,14 +21,19 @@ const navigationConfig = [
     icon: <ListSvg />,
   },
   {
-    title: "Заказы",
-    link: "/admin/orders",
-    icon: <OrderSvg />,
-  },
-  {
     title: "Пункты проката",
     link: "/admin/points",
-    icon: <OrderSvg />,
+    icon: <ListSvg />,
+  },
+  {
+    title: "Карточка автомобиля",
+    link: "/admin/car-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка пункта проката",
+    link: "/admin/point-profile",
+    icon: <EditSvg />,
   },
 ]
 

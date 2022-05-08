@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import { getLocalStorageData } from "../../utils/localStorage"
 import { setPointsList } from "../../store/PointListStore/actions"
 import Table from "../Table/Table"
+import { Link } from "react-router-dom"
 
 const PointList = () => {
   const dispatch = useDispatch()
@@ -23,7 +24,9 @@ const PointList = () => {
     {
       key: "name",
       columnHeader: "Название",
-      contentRender: (item) => item.name,
+      contentRender: (item) => (
+        <Link to={`/admin/point-profile/${item.id}`}>{item.name}</Link>
+      ),
     },
     {
       key: "city",

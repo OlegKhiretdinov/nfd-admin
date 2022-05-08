@@ -1,4 +1,5 @@
 import * as type from "./type"
+
 const initialState = {
   carTypes: [],
 }

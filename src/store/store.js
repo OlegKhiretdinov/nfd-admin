@@ -3,6 +3,7 @@ import thunk from "redux-thunk"
 import authReducer from "./authStore/authStore"
 import carsListReducer from "./carsListStore/carsListStore"
 import carTypesReducer from "./carTypesStore/carTypesStore"
+import cityListReducer from "./cityListStore/cityListStore"
 import editorStoreReducer from "./editorStore/editorStore"
 import messageReducer from "./messageStore/messageStore"
 import ordersListReducer from "./ordersListStore/ordersListStore"
@@ -16,6 +17,7 @@ const reducers = combineReducers({
   editorStore: editorStoreReducer,
   carTypesStore: carTypesReducer,
   messageStore: messageReducer,
+  cityListStore: cityListReducer,
 })
 
 const store = createStore(reducers, applyMiddleware(thunk))

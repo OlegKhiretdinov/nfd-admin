@@ -257,18 +257,15 @@ const CarProfile = () => {
                 onChange={handleChangeTypeCar}
               >
                 <option value={0}>Выберите тип</option>
-                {carTypes?.map((type) => {
-                  const currentTypeId = typeCar
-                  return (
-                    <option
-                      value={type.id}
-                      key={type.id}
-                      selected={type.id === currentTypeId}
-                    >
-                      {type.name}
-                    </option>
-                  )
-                })}
+                {carTypes?.map((type) => (
+                  <option
+                    value={type.id}
+                    key={type.id}
+                    selected={type.id === typeCar}
+                  >
+                    {type.name}
+                  </option>
+                ))}
               </select>
             </div>
             <Input
