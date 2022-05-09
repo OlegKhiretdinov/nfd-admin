@@ -43,7 +43,7 @@ const CityProfile = () => {
       .then((response) => response.json())
       .then((data) => {
         !cityId && navigate(`/admin/city-profile/${data.data.id}`)
-        dispatch(setMessage(`Успех! Категория ${name} сохранена`))
+        dispatch(setMessage(`Успех! Город ${cityName} сохранен`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {
