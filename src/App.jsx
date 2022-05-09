@@ -8,6 +8,7 @@ import ErrorPage from "./components/ErrorPage/ErrorPage"
 import OrderList from "./components/OrderList/OrderList"
 import PointList from "./components/PointList/PointList"
 import PointProfile from "./components/PointProfile/PointProfile"
+import RateTypeProfile from "./components/RateTypeProfile/RateTypeProfile"
 
 const App = () => {
   return (
@@ -30,6 +31,11 @@ const App = () => {
           />
           <Route path="city-profile/" element={<CityProfile />} />
           <Route path="city-profile/:cityId" element={<CityProfile />} />
+          <Route path="rate-type-profile/" element={<RateTypeProfile />} />
+          <Route
+            path="rate-type-profile/:rateTypeId"
+            element={<RateTypeProfile />}
+          />
           <Route path="*" element={<ErrorPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" />} />
