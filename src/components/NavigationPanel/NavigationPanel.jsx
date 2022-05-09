@@ -40,6 +40,11 @@ const navigationConfig = [
     link: "/admin/category-profile",
     icon: <EditSvg />,
   },
+  {
+    title: "Карточка города",
+    link: "/admin/city-profile",
+    icon: <EditSvg />,
+  },
 ]
 
 const NavigationPanel = () => {

@@ -3,6 +3,7 @@ import AdminPage from "./components/AdminPage/AdminPage"
 import CarCategoryProfile from "./components/CarCategoryProfile/CarCategoryProfile"
 import CarProfile from "./components/CarProfile/CarProfile"
 import CarsList from "./components/CarsList/CarsList"
+import CityProfile from "./components/CityProfile/CityProfile"
 import ErrorPage from "./components/ErrorPage/ErrorPage"
 import OrderList from "./components/OrderList/OrderList"
 import PointList from "./components/PointList/PointList"
@@ -27,6 +28,8 @@ const App = () => {
             path="category-profile/:categoryId"
             element={<CarCategoryProfile />}
           />
+          <Route path="city-profile/" element={<CityProfile />} />
+          <Route path="city-profile/:cityId" element={<CityProfile />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" />} />

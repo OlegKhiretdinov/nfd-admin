@@ -127,7 +127,7 @@ const PointProfile = () => {
             onChange={handleChangeAddress}
           />
           <div className={`${cls.selectWrapper} ${cls.fieldStyle}`}>
-            <span>Тип автомобиля</span>
+            <span>Город</span>
             <select
               className={cls.select}
               defaultValue={0}

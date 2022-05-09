@@ -28,7 +28,7 @@ const Profile = (props) => {
       dispatch(setEditorData({}))
       resetState()
     }
-  }, [id, token, table])
+  }, [])
 
   return (
     <>

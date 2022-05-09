@@ -5,51 +5,44 @@ import Input from "../Input/Input"
 import Profile from "../Profile/Profile"
 import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import { setMessage, setMessageType } from "../../store/messageStore/actions"
-import { TMessageType } from "../../utils/const"
 import { getLocalStorageData } from "../../utils/localStorage"
+import { TMessageType } from "../../utils/const"
 
-const CarCategoryProfile = () => {
+const CityProfile = () => {
   const navigate = useNavigate()
-  const { categoryId } = useParams()
+  const { cityId } = useParams()
 
   const dispatch = useDispatch()
   const { editorData } = useSelector(({ editorStore }) => editorStore)
 
   const token = getLocalStorageData("token")
 
-  const [name, setName] = useState()
-  const [description, setDescription] = useState()
+  const [cityName, setName] = useState()
 
   const handleChangeName = useCallback((e) => {
     setName(e.target.value)
   }, [])
 
-  const handleChangeDescription = useCallback((e) => {
-    setDescription(e.target.value)
-  }, [])
-
   const resetState = () => {
     setName("")
-    setDescription("")
   }
 
   const setInitialState = (data) => {
     setName(data.name)
-    setDescription(data.description)
   }
 
   useEffect(() => {
     setInitialState(editorData)
   }, [editorData])
 
-  const updateCategory = () => {
-    const data = { name, description }
-    const method = categoryId ? "PUT" : "POST"
+  const updateCity = () => {
+    const data = { name: cityName }
+    const method = cityId ? "PUT" : "POST"
 
-    requestEditEntity(token, "category", method, data, categoryId)
+    requestEditEntity(token, "city", method, data, cityId)
       .then((response) => response.json())
       .then((data) => {
-        !categoryId && navigate(`/admin/category-profile/${data.data.id}`)
+        !cityId && navigate(`/admin/city-profile/${data.data.id}`)
         dispatch(setMessage(`Успех! Категория ${name} сохранена`))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -59,42 +52,37 @@ const CarCategoryProfile = () => {
       })
   }
 
-  const resetData = useCallback(() => {
-    categoryId ? setInitialState(editorData) : resetState()
-  }, [editorData, categoryId])
+  const resetData = () => {
+    cityId ? setInitialState(editorData) : resetState()
+  }
 
-  const handleDeleteCategory = useCallback(() => {
-    requestDeleteEntity(token, "category", categoryId)
+  const deleteCity = useCallback(() => {
+    requestDeleteEntity(token, "city", cityId)
       .then(() => {
-        dispatch(setMessage(`Успех! Категория ${name} удалена`))
+        dispatch(setMessage(`Успех! Город ${cityName} удален`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {
-        dispatch(setMessage("Ошибка! Не удалось удалить категорию"))
+        dispatch(setMessage("Ошибка! Не удалось удалить город"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/categories")
-  }, [categoryId, token])
+    navigate("/admin/cities")
+  }, [cityId, token])
 
   return (
     <Profile
-      title="Категория машины"
-      subTitle={`Профиль категории ${name ? name : ""}`}
-      table="category"
-      id={categoryId}
+      title="Город"
+      subTitle={`Профиль Города ${cityName ? cityName : ""}`}
+      table="city"
+      id={cityId}
       resetState={resetState}
-      handleUpdate={updateCategory}
+      handleUpdate={updateCity}
       handleReset={resetData}
-      handleDelete={handleDeleteCategory}
+      handleDelete={deleteCity}
     >
-      <Input label={"Название"} value={name} onChange={handleChangeName} />
-      <Input
-        label={"Описание"}
-        value={description}
-        onChange={handleChangeDescription}
-      />
+      <Input label={"Название"} value={cityName} onChange={handleChangeName} />
     </Profile>
   )
 }
 
-export default CarCategoryProfile
+export default CityProfile
