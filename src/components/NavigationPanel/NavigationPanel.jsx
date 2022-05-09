@@ -35,6 +35,31 @@ const navigationConfig = [
     link: "/admin/point-profile",
     icon: <EditSvg />,
   },
+  {
+    title: "Карточка категории",
+    link: "/admin/category-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка города",
+    link: "/admin/city-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка типа тарифа",
+    link: "/admin/rate-type-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка тарифа",
+    link: "/admin/rate-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка статуса заказа",
+    link: "/admin/order-status-profile",
+    icon: <EditSvg />,
+  },
 ]
 
 const NavigationPanel = () => {
