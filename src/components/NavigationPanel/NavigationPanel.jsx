@@ -50,6 +50,11 @@ const navigationConfig = [
     link: "/admin/rate-type-profile",
     icon: <EditSvg />,
   },
+  {
+    title: "Карточка тарифа",
+    link: "/admin/rate-profile",
+    icon: <EditSvg />,
+  },
 ]
 
 const NavigationPanel = () => {

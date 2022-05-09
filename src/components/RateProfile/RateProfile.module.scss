@@ -1,0 +1,26 @@
+@import "../../styles/const.scss";
+
+.fieldStyle {
+  width: 320px;
+  margin: 0 21px 20px 0;
+}
+
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  color: $black;
+}
+
+.select {
+  margin: 8px 0;
+  padding: 8px 10px;
+  width: 320px;
+  height: 32px;
+  font-size: 11px;
+  border: 1px solid #becad6;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: transparent;
+  appearance: none;
+}

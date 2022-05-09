@@ -8,6 +8,7 @@ import ErrorPage from "./components/ErrorPage/ErrorPage"
 import OrderList from "./components/OrderList/OrderList"
 import PointList from "./components/PointList/PointList"
 import PointProfile from "./components/PointProfile/PointProfile"
+import RateProfile from "./components/RateProfile/RateProfile"
 import RateTypeProfile from "./components/RateTypeProfile/RateTypeProfile"
 
 const App = () => {
@@ -36,6 +37,8 @@ const App = () => {
             path="rate-type-profile/:rateTypeId"
             element={<RateTypeProfile />}
           />
+          <Route path="rate-profile/" element={<RateProfile />} />
+          <Route path="rate-profile/:rateId" element={<RateProfile />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" />} />
