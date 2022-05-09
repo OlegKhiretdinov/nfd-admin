@@ -35,6 +35,11 @@ const navigationConfig = [
     link: "/admin/point-profile",
     icon: <EditSvg />,
   },
+  {
+    title: "Карточка категории",
+    link: "/admin/category-profile",
+    icon: <EditSvg />,
+  },
 ]
 
 const NavigationPanel = () => {

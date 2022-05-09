@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import AdminPage from "./components/AdminPage/AdminPage"
+import CarCategoryProfile from "./components/CarCategoryProfile/CarCategoryProfile"
 import CarProfile from "./components/CarProfile/CarProfile"
 import CarsList from "./components/CarsList/CarsList"
 import ErrorPage from "./components/ErrorPage/ErrorPage"
@@ -21,6 +22,11 @@ const App = () => {
           <Route path="car-profile/:carId" element={<CarProfile />} />
           <Route path="point-profile/" element={<PointProfile />} />
           <Route path="point-profile/:pointId" element={<PointProfile />} />
+          <Route path="category-profile/" element={<CarCategoryProfile />} />
+          <Route
+            path="category-profile/:categoryId"
+            element={<CarCategoryProfile />}
+          />
           <Route path="*" element={<ErrorPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" />} />
