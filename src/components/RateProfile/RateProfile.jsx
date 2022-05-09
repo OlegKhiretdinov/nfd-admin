@@ -64,7 +64,7 @@ const RateProfile = () => {
       .then((response) => response.json())
       .then((data) => {
         !rateId && navigate(`/admin/rate-profile/${data.data.id}`)
-        dispatch(setMessage("Успех! Пункт проката сохранен"))
+        dispatch(setMessage("Успех! Тариф сохранен"))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {
@@ -80,7 +80,7 @@ const RateProfile = () => {
   const handleDeleteCategory = useCallback(() => {
     requestDeleteEntity(token, "rate", rateId)
       .then(() => {
-        dispatch(setMessage(`Успех! Тариф ${name} удалена`))
+        dispatch(setMessage(`Успех! Тариф ${name} удален`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {
