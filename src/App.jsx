@@ -6,6 +6,7 @@ import CarsList from "./components/CarsList/CarsList"
 import CityProfile from "./components/CityProfile/CityProfile"
 import ErrorPage from "./components/ErrorPage/ErrorPage"
 import OrderList from "./components/OrderList/OrderList"
+import OrderStatusProfile from "./components/OrderStatusProfile/OrderStatusProfile"
 import PointList from "./components/PointList/PointList"
 import PointProfile from "./components/PointProfile/PointProfile"
 import RateProfile from "./components/RateProfile/RateProfile"
@@ -39,6 +40,14 @@ const App = () => {
           />
           <Route path="rate-profile/" element={<RateProfile />} />
           <Route path="rate-profile/:rateId" element={<RateProfile />} />
+          <Route
+            path="order-status-profile/"
+            element={<OrderStatusProfile />}
+          />
+          <Route
+            path="order-status-profile/:orderStatusId"
+            element={<OrderStatusProfile />}
+          />
           <Route path="*" element={<ErrorPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" />} />

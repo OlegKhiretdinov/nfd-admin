@@ -55,6 +55,11 @@ const navigationConfig = [
     link: "/admin/rate-profile",
     icon: <EditSvg />,
   },
+  {
+    title: "Карточка статуса заказа",
+    link: "/admin/order-status-profile",
+    icon: <EditSvg />,
+  },
 ]
 
 const NavigationPanel = () => {
