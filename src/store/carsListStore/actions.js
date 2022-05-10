@@ -2,9 +2,9 @@ import * as type from "./types"
 import { requestTableData } from "../../api/request"
 import { tableRowLimit } from "../../utils/const"
 
-export const setPointsOffset = (carsOffset) => ({
-  type: type.SET_CARS_OFFSET,
-  carsOffset,
+export const setCarsListPage = (carListPage) => ({
+  type: type.SET_CARS_LIST_PAGE,
+  carListPage,
 })
 
 const setCarsListData = (carsList) => ({
@@ -18,9 +18,9 @@ const setCarsPageCount = (carsPageCount) => ({
 })
 
 export const setCarsList =
-  (token, table, offset = 75, filters = "") =>
+  (token, table, page, filters = "") =>
   async (dispatch) => {
-    const response = await requestTableData(token, table, offset, filters)
+    const response = await requestTableData(token, table, page, filters)
     dispatch(setCarsListData(response.data))
     dispatch(setCarsPageCount(Math.ceil(response.count / tableRowLimit)))
   }

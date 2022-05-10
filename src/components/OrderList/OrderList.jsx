@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux"
 import Table from "../Table/Table"
 import Button from "../Button/Button"
 import Checkbox from "../Checkbox/Checkbox"
-import { setOrdersList } from "../../store/ordersListStore/actions"
+import {
+  setOrdersList,
+  setOrdersPage,
+} from "../../store/ordersListStore/actions"
 import { getLocalStorageData } from "../../utils/localStorage"
 import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import { ReactComponent as EnableSvg } from "../../assets/icons/enable.svg"
@@ -12,17 +15,22 @@ import { ReactComponent as CancelSvg } from "../../assets/icons/cancel.svg"
 import defaultCar from "../../assets/img/default_car.png"
 import cls from "./OrderList.module.scss"
 import { dateFormat } from "../../utils/const"
+import Pagination from "../Pagination/Pagination"
 
 const OrderList = () => {
   const dispatch = useDispatch()
 
-  const { orderPageCount, ordersList } = useSelector(
+  const { orderPageCount, ordersList, ordersPage } = useSelector(
     ({ ordersList }) => ordersList
   )
 
   useEffect(() => {
-    dispatch(setOrdersList(getLocalStorageData("token"), "order"))
-  }, [])
+    dispatch(setOrdersList(getLocalStorageData("token"), "order", ordersPage))
+  }, [ordersPage])
+
+  const paginationClick = (page) => {
+    dispatch(setOrdersPage(page - 1))
+  }
 
   const columnConfig = [
     {
@@ -161,17 +169,11 @@ const OrderList = () => {
         </div>
         <Table list={ordersList} columnConfig={columnConfig} />
         <div className={cls.footer}>
-          <div className={cls.pagination}>
-            <a href="#">{"«"}</a>
-            <a href="#">1</a>
-            <span>...</span>
-            <a href="#">4</a>
-            <span className={cls.current}>5</span>
-            <a href="#">6</a>
-            <span>...</span>
-            <a href="#">{orderPageCount || null}</a>
-            <a href="#">{"»"}</a>
-          </div>
+          <Pagination
+            pageCount={orderPageCount}
+            current={ordersPage + 1}
+            clickHandler={paginationClick}
+          />
         </div>
       </div>
     </>

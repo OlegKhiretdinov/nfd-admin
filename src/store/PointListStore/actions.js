@@ -2,9 +2,9 @@ import * as type from "./types"
 import { requestTableData } from "../../api/request"
 import { tableRowLimit } from "../../utils/const"
 
-export const setPointsOffset = (pointsOffset) => ({
-  type: type.SET_POINTS_OFFSET,
-  pointsOffset,
+export const setPointsPage = (pointsPage) => ({
+  type: type.SET_POINTS_PAGE,
+  pointsPage,
 })
 
 const setPointsListData = (pointsList) => ({

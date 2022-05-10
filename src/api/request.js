@@ -18,17 +18,14 @@ export const loginRequest = (username, password) => {
   }).then((response) => response.json())
 }
 
-export const requestTableData = (token, table, offset) => {
-  return fetch(
-    `${baseUrl}db/${table}/?limit=${tableRowLimit}&offset=${offset}`,
-    {
-      method: "GET",
-      headers: {
-        ...headers,
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  ).then((response) => response.json())
+export const requestTableData = (token, table, page) => {
+  return fetch(`${baseUrl}db/${table}/?limit=${tableRowLimit}&page=${page}`, {
+    method: "GET",
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => response.json())
 }
 
 export const requestGetEntity = (token, table, id) => {

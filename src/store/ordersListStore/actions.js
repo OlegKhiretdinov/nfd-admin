@@ -2,9 +2,9 @@ import * as type from "./types"
 import { requestTableData } from "../../api/request"
 import { tableRowLimit } from "../../utils/const"
 
-export const setOffset = (orderOffset) => ({
-  type: type.SET_ORDERS_OFFSET,
-  orderOffset,
+export const setOrdersPage = (ordersPage) => ({
+  type: type.SET_ORDERS_PAGE,
+  ordersPage,
 })
 
 const setOrdersListData = (ordersList) => ({
