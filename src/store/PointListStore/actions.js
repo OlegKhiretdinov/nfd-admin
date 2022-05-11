@@ -2,9 +2,9 @@ import * as type from "./types"
 import { requestTableData } from "../../api/request"
 import { tableRowLimit } from "../../utils/const"
 
-export const setPointsOffset = (pointsOffset) => ({
-  type: type.SET_POINTS_OFFSET,
-  pointsOffset,
+export const setPointsPage = (pointsPage) => ({
+  type: type.SET_POINTS_PAGE,
+  pointsPage,
 })
 
 const setPointsListData = (pointsList) => ({
@@ -17,10 +17,8 @@ const setPointsPageCount = (pointsPageCount) => ({
   pointsPageCount,
 })
 
-export const setPointsList =
-  (token, table, offset = 0, filters = "") =>
-  async (dispatch) => {
-    const response = await requestTableData(token, table, offset, filters)
-    dispatch(setPointsListData(response.data))
-    dispatch(setPointsPageCount(Math.ceil(response.count / tableRowLimit)))
-  }
+export const setPointsList = (table, page) => async (dispatch) => {
+  const response = await requestTableData(table, page)
+  dispatch(setPointsListData(response.data))
+  dispatch(setPointsPageCount(Math.ceil(response.count / tableRowLimit)))
+}

@@ -6,9 +6,7 @@ const setCarTypesData = (carTypes) => ({
   carTypes,
 })
 
-export const setCarTypes =
-  (token, table, offset = 0) =>
-  async (dispatch) => {
-    const response = await requestTableData(token, table, offset)
-    dispatch(setCarTypesData(response.data))
-  }
+export const setCarTypes = (table, page) => async (dispatch) => {
+  const response = await requestTableData(table, page)
+  dispatch(setCarTypesData(response.data))
+}

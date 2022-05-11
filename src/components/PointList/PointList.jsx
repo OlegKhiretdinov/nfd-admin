@@ -4,21 +4,28 @@ import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import cls from "./PointList.module.scss"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { getLocalStorageData } from "../../utils/localStorage"
-import { setPointsList } from "../../store/PointListStore/actions"
+import {
+  setPointsList,
+  setPointsPage,
+} from "../../store/PointListStore/actions"
 import Table from "../Table/Table"
 import { Link } from "react-router-dom"
+import Pagination from "../Pagination/Pagination"
 
 const PointList = () => {
   const dispatch = useDispatch()
 
-  const { pointsPageCount, pointsList } = useSelector(
+  const { pointsPageCount, pointsList, pointsPage } = useSelector(
     ({ pointsList }) => pointsList
   )
 
   useEffect(() => {
-    dispatch(setPointsList(getLocalStorageData("token"), "point"))
-  }, [])
+    dispatch(setPointsList("point", pointsPage))
+  }, [pointsPage])
+
+  const paginationClick = (page) => {
+    dispatch(setPointsPage(page - 1))
+  }
 
   const columnConfig = [
     {
@@ -63,17 +70,11 @@ const PointList = () => {
         </div>
         <Table list={pointsList} columnConfig={columnConfig} />
         <div className={cls.footer}>
-          <div className={cls.pagination}>
-            <a href="#">{"«"}</a>
-            <a href="#">1</a>
-            <span>...</span>
-            <a href="#">4</a>
-            <span className={cls.current}>5</span>
-            <a href="#">6</a>
-            <span>...</span>
-            <a href="#">{pointsPageCount || null}</a>
-            <a href="#">{"»"}</a>
-          </div>
+          <Pagination
+            pageCount={pointsPageCount}
+            current={pointsPage + 1}
+            clickHandler={paginationClick}
+          />
         </div>
       </>
     </PageLayout>

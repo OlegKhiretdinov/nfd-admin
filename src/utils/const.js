@@ -1,4 +1,4 @@
-export const tableRowLimit = 100
+export const tableRowLimit = 3
 export const dateFormat = {
   year: "numeric",
   month: "2-digit",

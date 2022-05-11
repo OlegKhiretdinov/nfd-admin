@@ -8,7 +8,6 @@ import ProgressBar from "../ProgressBar/ProgressBar"
 import Checkbox from "../Checkbox/Checkbox"
 import { getEditorData, setEditorData } from "../../store/editorStore/actions"
 import { setCarTypes } from "../../store/carTypesStore/action"
-import { getLocalStorageData } from "../../utils/localStorage"
 import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import defaultCar from "../../assets/img/default_car.png"
 import cls from "./CarProfile.module.scss"
@@ -24,8 +23,6 @@ const CarProfile = () => {
   const navigate = useNavigate()
   const { carId } = useParams()
 
-  const token = getLocalStorageData("token")
-
   const [isEditable, setIsEditable] = useState(false)
 
   const [preview, setPreview] = useState()
@@ -40,7 +37,7 @@ const CarProfile = () => {
 
   useEffect(() => {
     if (carId) {
-      dispatch(getEditorData(token, "car", carId))
+      dispatch(getEditorData("car", carId))
     } else {
       dispatch(setEditorData({}))
       resetState()
@@ -48,7 +45,7 @@ const CarProfile = () => {
   }, [carId])
 
   useEffect(() => {
-    carTypes.length === 0 && dispatch(setCarTypes(token, "category"))
+    dispatch(setCarTypes("category"))
   }, [])
 
   const setInitialState = () => {
@@ -84,8 +81,10 @@ const CarProfile = () => {
   const handleSetColorsClick = useCallback(
     (e) => {
       const newColorField = e.target.closest("div").querySelector("input")
-      setColors([...colors, newColorField.value])
-      newColorField.value = ""
+      if (newColorField.value !== "") {
+        setColors([...colors, newColorField.value])
+        newColorField.value = ""
+      }
     },
     [colors]
   )
@@ -153,10 +152,9 @@ const CarProfile = () => {
 
     const method = carId ? "PUT" : "POST"
 
-    requestEditEntity(token, "car", method, data, carId)
-      .then((response) => response.json())
-      .then((data) => {
-        !carId && navigate(`/admin/car-profile/${data.data.id}`)
+    requestEditEntity("car", method, data, carId)
+      .then(() => {
+        !carId && navigate(`/admin/car-profile`)
         dispatch(setMessage("Успех! Машина сохранена"))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -171,7 +169,7 @@ const CarProfile = () => {
   }
 
   const handleDeleteCar = () => {
-    requestDeleteEntity(token, "car", carId)
+    requestDeleteEntity("car", carId)
       .then(() => {
         dispatch(setMessage("Успех! Машина удалена"))
         dispatch(setMessageType(TMessageType.success))

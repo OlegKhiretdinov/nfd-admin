@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { getEditorData, setEditorData } from "../../store/editorStore/actions"
-import { getLocalStorageData } from "../../utils/localStorage"
 import Button from "../Button/Button"
 import cls from "./Profile.module.scss"
 
@@ -19,11 +18,10 @@ const Profile = (props) => {
   } = props
 
   const dispatch = useDispatch()
-  const token = getLocalStorageData("token")
 
   useEffect(() => {
     if (id) {
-      dispatch(getEditorData(token, table, id))
+      dispatch(getEditorData(table, id))
     } else {
       dispatch(setEditorData({}))
       resetState()

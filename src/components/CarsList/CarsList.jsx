@@ -2,21 +2,27 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Button from "../Button/Button"
 import Table from "../Table/Table"
-import { setCarsList } from "../../store/carsListStore/actions"
-import { getLocalStorageData } from "../../utils/localStorage"
+import { setCarsList, setCarsListPage } from "../../store/carsListStore/actions"
 import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import defaultCar from "../../assets/img/default_car.png"
 import cls from "./CarList.module.scss"
 import { Link } from "react-router-dom"
+import Pagination from "../Pagination/Pagination"
 
 const CarsList = () => {
   const dispatch = useDispatch()
 
-  const { carsPageCount, carsList } = useSelector(({ carsList }) => carsList)
+  const { carsPageCount, carListPage, carsList } = useSelector(
+    ({ carsList }) => carsList
+  )
 
   useEffect(() => {
-    dispatch(setCarsList(getLocalStorageData("token"), "car"))
-  }, [])
+    dispatch(setCarsList("car", carListPage))
+  }, [carListPage])
+
+  const paginationClick = (page) => {
+    dispatch(setCarsListPage(page - 1))
+  }
 
   const columnConfig = [
     {
@@ -54,7 +60,7 @@ const CarsList = () => {
     {
       key: "categoryId",
       columnHeader: "Категория",
-      contentRender: (item) => item.categoryId.name,
+      contentRender: (item) => item.categoryId?.name,
     },
     {
       key: "colors",
@@ -101,17 +107,11 @@ const CarsList = () => {
         </div>
         <Table list={carsList} columnConfig={columnConfig} />
         <div className={cls.footer}>
-          <div className={cls.pagination}>
-            <a href="#">{"«"}</a>
-            <a href="#">1</a>
-            <span>...</span>
-            <a href="#">4</a>
-            <span className={cls.current}>5</span>
-            <a href="#">6</a>
-            <span>...</span>
-            <a href="#">{carsPageCount || null}</a>
-            <a href="#">{"»"}</a>
-          </div>
+          <Pagination
+            pageCount={carsPageCount}
+            current={carListPage + 1}
+            clickHandler={paginationClick}
+          />
         </div>
       </div>
     </>

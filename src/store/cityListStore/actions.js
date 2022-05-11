@@ -6,9 +6,7 @@ const setCityListData = (cityList) => ({
   cityList,
 })
 
-export const setCityList =
-  (token, table, offset = 0) =>
-  async (dispatch) => {
-    const response = await requestTableData(token, table, offset)
-    dispatch(setCityListData(response.data))
-  }
+export const setCityList = (table) => async (dispatch) => {
+  const response = await requestTableData(table)
+  dispatch(setCityListData(response.data))
+}
