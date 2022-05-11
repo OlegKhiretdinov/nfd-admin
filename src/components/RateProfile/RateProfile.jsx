@@ -7,7 +7,6 @@ import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import { setMessage, setMessageType } from "../../store/messageStore/actions"
 import { setRateTypes } from "../../store/rateTypesStore/action"
 import { TMessageType } from "../../utils/const"
-import { getLocalStorageData } from "../../utils/localStorage"
 import cls from "./RateProfile.module.scss"
 
 const RateProfile = () => {
@@ -18,8 +17,6 @@ const RateProfile = () => {
   const [{ editorData }, { rateTypes }] = useSelector(
     ({ editorStore, rateTypesStore }) => [editorStore, rateTypesStore]
   )
-
-  const token = getLocalStorageData("token")
 
   const [rateTypeId, setRateId] = useState()
   const [price, setPrice] = useState()
@@ -35,7 +32,7 @@ const RateProfile = () => {
   }
 
   useEffect(() => {
-    rateTypes.length === 0 && dispatch(setRateTypes(token, "rateType"))
+    dispatch(setRateTypes("rateType"))
   }, [])
 
   useEffect(() => {
@@ -60,10 +57,9 @@ const RateProfile = () => {
 
     const method = rateId ? "PUT" : "POST"
 
-    requestEditEntity(token, "rate", method, data, rateId)
-      .then((response) => response.json())
-      .then((data) => {
-        !rateId && navigate(`/admin/rate-profile/${data.data.id}`)
+    requestEditEntity("rate", method, data, rateId)
+      .then(() => {
+        !rateId && navigate(`/admin/rates`)
         dispatch(setMessage("Успех! Тариф сохранен"))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -78,9 +74,9 @@ const RateProfile = () => {
   }, [editorData, rateId])
 
   const handleDeleteCategory = useCallback(() => {
-    requestDeleteEntity(token, "rate", rateId)
+    requestDeleteEntity("rate", rateId)
       .then(() => {
-        dispatch(setMessage(`Успех! Тариф ${name} удален`))
+        dispatch(setMessage(`Успех! Тариф удален`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {
@@ -88,7 +84,7 @@ const RateProfile = () => {
         dispatch(setMessageType(TMessageType.error))
       })
     navigate("/admin/rates")
-  }, [rateId, token])
+  }, [rateId])
 
   return (
     <Profile

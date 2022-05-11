@@ -4,7 +4,6 @@ import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import cls from "./PointList.module.scss"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { getLocalStorageData } from "../../utils/localStorage"
 import {
   setPointsList,
   setPointsPage,
@@ -21,7 +20,7 @@ const PointList = () => {
   )
 
   useEffect(() => {
-    dispatch(setPointsList(getLocalStorageData("token"), "point", pointsPage))
+    dispatch(setPointsList("point", pointsPage))
   }, [pointsPage])
 
   const paginationClick = (page) => {

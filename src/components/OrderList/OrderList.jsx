@@ -7,7 +7,6 @@ import {
   setOrdersList,
   setOrdersPage,
 } from "../../store/ordersListStore/actions"
-import { getLocalStorageData } from "../../utils/localStorage"
 import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import { ReactComponent as EnableSvg } from "../../assets/icons/enable.svg"
 import { ReactComponent as ChangeSvg } from "../../assets/icons/change.svg"
@@ -25,7 +24,7 @@ const OrderList = () => {
   )
 
   useEffect(() => {
-    dispatch(setOrdersList(getLocalStorageData("token"), "order", ordersPage))
+    dispatch(setOrdersList("order", ordersPage))
   }, [ordersPage])
 
   const paginationClick = (page) => {

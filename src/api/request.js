@@ -1,4 +1,5 @@
 import { tableRowLimit } from "../utils/const"
+import { getLocalStorageData } from "../utils/localStorage"
 
 const baseUrl = "https://api-factory.simbirsoft1.com/api/"
 
@@ -18,7 +19,8 @@ export const loginRequest = (username, password) => {
   }).then((response) => response.json())
 }
 
-export const requestTableData = (token, table, page) => {
+export const requestTableData = (table, page) => {
+  const token = getLocalStorageData("token")
   return fetch(`${baseUrl}db/${table}/?limit=${tableRowLimit}&page=${page}`, {
     method: "GET",
     headers: {
@@ -28,7 +30,8 @@ export const requestTableData = (token, table, page) => {
   }).then((response) => response.json())
 }
 
-export const requestGetEntity = (token, table, id) => {
+export const requestGetEntity = (table, id) => {
+  const token = getLocalStorageData("token")
   return fetch(`${baseUrl}db/${table}/${id ? id : ""}`, {
     method: "GET",
     headers: {
@@ -38,7 +41,8 @@ export const requestGetEntity = (token, table, id) => {
   }).then((response) => response.json())
 }
 
-export const requestEditEntity = (token, table, method, data, id) => {
+export const requestEditEntity = (table, method, data, id) => {
+  const token = getLocalStorageData("token")
   return fetch(`${baseUrl}db/${table}/${id ? id : ""}`, {
     method,
     headers: {
@@ -49,7 +53,8 @@ export const requestEditEntity = (token, table, method, data, id) => {
   })
 }
 
-export const requestDeleteEntity = (token, table, id) => {
+export const requestDeleteEntity = (table, id) => {
+  const token = getLocalStorageData("token")
   return fetch(`${baseUrl}db/${table}/${id}`, {
     method: "DELETE",
     headers: {

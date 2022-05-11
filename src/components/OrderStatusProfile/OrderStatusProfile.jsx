@@ -5,7 +5,6 @@ import Input from "../Input/Input"
 import Profile from "../Profile/Profile"
 import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import { setMessage, setMessageType } from "../../store/messageStore/actions"
-import { getLocalStorageData } from "../../utils/localStorage"
 import { TMessageType } from "../../utils/const"
 
 const OrderStatusProfile = () => {
@@ -14,8 +13,6 @@ const OrderStatusProfile = () => {
 
   const dispatch = useDispatch()
   const { editorData } = useSelector(({ editorStore }) => editorStore)
-
-  const token = getLocalStorageData("token")
 
   const [cityName, setName] = useState()
 
@@ -39,11 +36,9 @@ const OrderStatusProfile = () => {
     const data = { name: cityName }
     const method = orderStatusId ? "PUT" : "POST"
 
-    requestEditEntity(token, "orderStatus", method, data, orderStatusId)
-      .then((response) => response.json())
-      .then((data) => {
-        !orderStatusId &&
-          navigate(`/admin/order-status-profile/${data.data.id}`)
+    requestEditEntity("orderStatus", method, data, orderStatusId)
+      .then(() => {
+        !orderStatusId && navigate(`/admin/order-status-list`)
         dispatch(setMessage(`Успех! Статус заказа ${name} сохранен`))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -58,9 +53,9 @@ const OrderStatusProfile = () => {
   }
 
   const deleteCity = useCallback(() => {
-    requestDeleteEntity(token, "orderStatus", orderStatusId)
+    requestDeleteEntity("orderStatus", orderStatusId)
       .then(() => {
-        dispatch(setMessage(`Успех! Статус заказа ${cityName} удален`))
+        dispatch(setMessage(`Успех! Статус заказа удален`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {
@@ -68,7 +63,7 @@ const OrderStatusProfile = () => {
         dispatch(setMessageType(TMessageType.error))
       })
     navigate("/admin/order-status-list")
-  }, [orderStatusId, token])
+  }, [orderStatusId])
 
   return (
     <Profile

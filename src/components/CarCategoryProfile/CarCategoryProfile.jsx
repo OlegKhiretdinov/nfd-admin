@@ -6,7 +6,6 @@ import Profile from "../Profile/Profile"
 import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import { setMessage, setMessageType } from "../../store/messageStore/actions"
 import { TMessageType } from "../../utils/const"
-import { getLocalStorageData } from "../../utils/localStorage"
 
 const CarCategoryProfile = () => {
   const navigate = useNavigate()
@@ -14,8 +13,6 @@ const CarCategoryProfile = () => {
 
   const dispatch = useDispatch()
   const { editorData } = useSelector(({ editorStore }) => editorStore)
-
-  const token = getLocalStorageData("token")
 
   const [name, setName] = useState()
   const [description, setDescription] = useState()
@@ -46,10 +43,9 @@ const CarCategoryProfile = () => {
     const data = { name, description }
     const method = categoryId ? "PUT" : "POST"
 
-    requestEditEntity(token, "category", method, data, categoryId)
-      .then((response) => response.json())
-      .then((data) => {
-        !categoryId && navigate(`/admin/category-profile/${data.data.id}`)
+    requestEditEntity("category", method, data, categoryId)
+      .then(() => {
+        !categoryId && navigate(`/admin/categories`)
         dispatch(setMessage(`Успех! Категория ${name} сохранена`))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -64,9 +60,9 @@ const CarCategoryProfile = () => {
   }, [editorData, categoryId])
 
   const handleDeleteCategory = useCallback(() => {
-    requestDeleteEntity(token, "category", categoryId)
+    requestDeleteEntity("category", categoryId)
       .then(() => {
-        dispatch(setMessage(`Успех! Категория ${name} удалена`))
+        dispatch(setMessage(`Успех! Категория удалена`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {
@@ -74,7 +70,7 @@ const CarCategoryProfile = () => {
         dispatch(setMessageType(TMessageType.error))
       })
     navigate("/admin/categories")
-  }, [categoryId, token])
+  }, [categoryId])
 
   return (
     <Profile

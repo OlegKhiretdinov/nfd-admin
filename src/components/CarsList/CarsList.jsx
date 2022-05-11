@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import Button from "../Button/Button"
 import Table from "../Table/Table"
 import { setCarsList, setCarsListPage } from "../../store/carsListStore/actions"
-import { getLocalStorageData } from "../../utils/localStorage"
 import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import defaultCar from "../../assets/img/default_car.png"
 import cls from "./CarList.module.scss"
@@ -18,7 +17,7 @@ const CarsList = () => {
   )
 
   useEffect(() => {
-    dispatch(setCarsList(getLocalStorageData("token"), "car", carListPage))
+    dispatch(setCarsList("car", carListPage))
   }, [carListPage])
 
   const paginationClick = (page) => {

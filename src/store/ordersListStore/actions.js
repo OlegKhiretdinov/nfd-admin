@@ -18,9 +18,9 @@ const setOrderPageCount = (orderPageCount) => ({
 })
 
 export const setOrdersList =
-  (token, table, offset = 20, filters = "") =>
+  (table, offset = 20, filters = "") =>
   async (dispatch) => {
-    const response = await requestTableData(token, table, offset, filters)
+    const response = await requestTableData(table, offset, filters)
     dispatch(setOrdersListData(response.data))
     dispatch(setOrderPageCount(Math.ceil(response.count / tableRowLimit)))
   }
