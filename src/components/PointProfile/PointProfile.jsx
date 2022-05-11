@@ -76,9 +76,8 @@ const PointProfile = () => {
     const method = pointId ? "PUT" : "POST"
 
     requestEditEntity("point", method, data, pointId)
-      .then((response) => response.json())
-      .then((data) => {
-        !pointId && navigate(`/admin/point-profile/${data.data.id}`)
+      .then(() => {
+        !pointId && navigate(`/admin/points`)
         dispatch(setMessage("Успех! Пункт проката сохранен"))
         dispatch(setMessageType(TMessageType.success))
       })

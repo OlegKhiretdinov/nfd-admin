@@ -153,9 +153,8 @@ const CarProfile = () => {
     const method = carId ? "PUT" : "POST"
 
     requestEditEntity("car", method, data, carId)
-      .then((response) => response.json())
-      .then((data) => {
-        !carId && navigate(`/admin/car-profile/${data.data.id}`)
+      .then(() => {
+        !carId && navigate(`/admin/car-profile`)
         dispatch(setMessage("Успех! Машина сохранена"))
         dispatch(setMessageType(TMessageType.success))
       })

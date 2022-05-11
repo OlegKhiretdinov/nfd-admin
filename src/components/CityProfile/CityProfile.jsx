@@ -37,9 +37,8 @@ const CityProfile = () => {
     const method = cityId ? "PUT" : "POST"
 
     requestEditEntity("city", method, data, cityId)
-      .then((response) => response.json())
-      .then((data) => {
-        !cityId && navigate(`/admin/city-profile/${data.data.id}`)
+      .then(() => {
+        !cityId && navigate(`/admin/cities`)
         dispatch(setMessage(`Успех! Город ${cityName} сохранен`))
         dispatch(setMessageType(TMessageType.success))
       })

@@ -44,9 +44,8 @@ const CarCategoryProfile = () => {
     const method = categoryId ? "PUT" : "POST"
 
     requestEditEntity("category", method, data, categoryId)
-      .then((response) => response.json())
-      .then((data) => {
-        !categoryId && navigate(`/admin/category-profile/${data.data.id}`)
+      .then(() => {
+        !categoryId && navigate(`/admin/categories`)
         dispatch(setMessage(`Успех! Категория ${name} сохранена`))
         dispatch(setMessageType(TMessageType.success))
       })

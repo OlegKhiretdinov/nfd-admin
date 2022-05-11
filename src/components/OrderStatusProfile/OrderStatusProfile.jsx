@@ -37,10 +37,8 @@ const OrderStatusProfile = () => {
     const method = orderStatusId ? "PUT" : "POST"
 
     requestEditEntity("orderStatus", method, data, orderStatusId)
-      .then((response) => response.json())
-      .then((data) => {
-        !orderStatusId &&
-          navigate(`/admin/order-status-profile/${data.data.id}`)
+      .then(() => {
+        !orderStatusId && navigate(`/admin/order-status-list`)
         dispatch(setMessage(`Успех! Статус заказа ${name} сохранен`))
         dispatch(setMessageType(TMessageType.success))
       })
