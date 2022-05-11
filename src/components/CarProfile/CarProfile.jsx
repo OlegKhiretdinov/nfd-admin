@@ -84,8 +84,10 @@ const CarProfile = () => {
   const handleSetColorsClick = useCallback(
     (e) => {
       const newColorField = e.target.closest("div").querySelector("input")
-      setColors([...colors, newColorField.value])
-      newColorField.value = ""
+      if (newColorField.value !== "") {
+        setColors([...colors, newColorField.value])
+        newColorField.value = ""
+      }
     },
     [colors]
   )
