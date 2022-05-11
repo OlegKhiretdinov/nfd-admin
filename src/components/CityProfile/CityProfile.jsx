@@ -59,7 +59,7 @@ const CityProfile = () => {
   const deleteCity = useCallback(() => {
     requestDeleteEntity(token, "city", cityId)
       .then(() => {
-        dispatch(setMessage(`Успех! Город ${cityName} удален`))
+        dispatch(setMessage(`Успех! Город удален`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {

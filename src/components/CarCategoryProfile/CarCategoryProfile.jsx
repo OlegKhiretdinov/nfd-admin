@@ -66,7 +66,7 @@ const CarCategoryProfile = () => {
   const handleDeleteCategory = useCallback(() => {
     requestDeleteEntity(token, "category", categoryId)
       .then(() => {
-        dispatch(setMessage(`Успех! Категория ${name} удалена`))
+        dispatch(setMessage(`Успех! Категория удалена`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {

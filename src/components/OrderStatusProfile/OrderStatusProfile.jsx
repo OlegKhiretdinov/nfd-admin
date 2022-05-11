@@ -60,7 +60,7 @@ const OrderStatusProfile = () => {
   const deleteCity = useCallback(() => {
     requestDeleteEntity(token, "orderStatus", orderStatusId)
       .then(() => {
-        dispatch(setMessage(`Успех! Статус заказа ${cityName} удален`))
+        dispatch(setMessage(`Успех! Статус заказа удален`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {

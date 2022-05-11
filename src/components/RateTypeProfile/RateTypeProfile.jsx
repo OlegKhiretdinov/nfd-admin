@@ -66,7 +66,7 @@ const RateTypeProfile = () => {
   const handleDeleteCategory = useCallback(() => {
     requestDeleteEntity(token, "rateType", rateTypeId)
       .then(() => {
-        dispatch(setMessage(`Успех! Тип тарифа ${name} удален`))
+        dispatch(setMessage(`Успех! Тип тарифа удален`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {

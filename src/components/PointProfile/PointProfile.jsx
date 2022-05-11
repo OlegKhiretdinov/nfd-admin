@@ -39,7 +39,7 @@ const PointProfile = () => {
   }
 
   useEffect(() => {
-    cityList.length === 0 && dispatch(setCityList(token, "city"))
+    dispatch(setCityList(token, "city"))
   }, [])
 
   useEffect(() => {

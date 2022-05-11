@@ -35,7 +35,7 @@ const RateProfile = () => {
   }
 
   useEffect(() => {
-    rateTypes.length === 0 && dispatch(setRateTypes(token, "rateType"))
+    dispatch(setRateTypes(token, "rateType"))
   }, [])
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const RateProfile = () => {
   const handleDeleteCategory = useCallback(() => {
     requestDeleteEntity(token, "rate", rateId)
       .then(() => {
-        dispatch(setMessage(`Успех! Тариф ${name} удален`))
+        dispatch(setMessage(`Успех! Тариф удален`))
         dispatch(setMessageType(TMessageType.success))
       })
       .catch(() => {
