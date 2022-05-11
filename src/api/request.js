@@ -21,7 +21,12 @@ export const loginRequest = (username, password) => {
 
 export const requestTableData = (table, page) => {
   const token = getLocalStorageData("token")
-  return fetch(`${baseUrl}db/${table}/?limit=${tableRowLimit}&page=${page}`, {
+  let requestUrl = `${baseUrl}db/${table}/`
+  if (page !== undefined) {
+    requestUrl += `?limit=${tableRowLimit}&page=${page}/`
+  }
+
+  return fetch(`${requestUrl}`, {
     method: "GET",
     headers: {
       ...headers,

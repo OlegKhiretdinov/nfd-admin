@@ -74,8 +74,8 @@ const RateTypeProfile = () => {
 
   return (
     <Profile
-      title="Категория машины"
-      subTitle={`Профиль категории ${name ? name : ""}`}
+      title="Тип тарифа"
+      subTitle={`Профиль типа тарифа ${name ? name : ""}`}
       table="rateType"
       id={rateTypeId}
       resetState={resetState}

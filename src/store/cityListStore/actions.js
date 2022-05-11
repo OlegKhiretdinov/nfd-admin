@@ -6,7 +6,7 @@ const setCityListData = (cityList) => ({
   cityList,
 })
 
-export const setCityList = (table, page) => async (dispatch) => {
-  const response = await requestTableData(table, page)
+export const setCityList = (table) => async (dispatch) => {
+  const response = await requestTableData(table)
   dispatch(setCityListData(response.data))
 }
