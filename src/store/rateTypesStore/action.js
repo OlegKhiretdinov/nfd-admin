@@ -6,9 +6,7 @@ const setRateTypesData = (rateTypes) => ({
   rateTypes,
 })
 
-export const setRateTypes =
-  (token, table, offset = 0) =>
-  async (dispatch) => {
-    const response = await requestTableData(token, table, offset)
-    dispatch(setRateTypesData(response.data))
-  }
+export const setRateTypes = (table, page) => async (dispatch) => {
+  const response = await requestTableData(table, page)
+  dispatch(setRateTypesData(response.data))
+}

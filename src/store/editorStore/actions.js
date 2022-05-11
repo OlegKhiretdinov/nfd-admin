@@ -6,7 +6,7 @@ export const setEditorData = (editorData) => ({
   editorData,
 })
 
-export const getEditorData = (token, table, id) => async (dispatch) => {
-  const response = await requestGetEntity(token, table, id)
+export const getEditorData = (table, id) => async (dispatch) => {
+  const response = await requestGetEntity(table, id)
   dispatch(setEditorData(response.data))
 }

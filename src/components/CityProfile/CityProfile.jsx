@@ -5,7 +5,6 @@ import Input from "../Input/Input"
 import Profile from "../Profile/Profile"
 import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import { setMessage, setMessageType } from "../../store/messageStore/actions"
-import { getLocalStorageData } from "../../utils/localStorage"
 import { TMessageType } from "../../utils/const"
 
 const CityProfile = () => {
@@ -14,8 +13,6 @@ const CityProfile = () => {
 
   const dispatch = useDispatch()
   const { editorData } = useSelector(({ editorStore }) => editorStore)
-
-  const token = getLocalStorageData("token")
 
   const [cityName, setName] = useState()
 
@@ -39,7 +36,7 @@ const CityProfile = () => {
     const data = { name: cityName }
     const method = cityId ? "PUT" : "POST"
 
-    requestEditEntity(token, "city", method, data, cityId)
+    requestEditEntity("city", method, data, cityId)
       .then((response) => response.json())
       .then((data) => {
         !cityId && navigate(`/admin/city-profile/${data.data.id}`)
@@ -57,7 +54,7 @@ const CityProfile = () => {
   }
 
   const deleteCity = useCallback(() => {
-    requestDeleteEntity(token, "city", cityId)
+    requestDeleteEntity("city", cityId)
       .then(() => {
         dispatch(setMessage(`Успех! Город удален`))
         dispatch(setMessageType(TMessageType.success))
@@ -67,7 +64,7 @@ const CityProfile = () => {
         dispatch(setMessageType(TMessageType.error))
       })
     navigate("/admin/cities")
-  }, [cityId, token])
+  }, [cityId])
 
   return (
     <Profile

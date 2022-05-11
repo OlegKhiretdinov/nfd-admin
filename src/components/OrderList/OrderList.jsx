@@ -4,7 +4,6 @@ import Table from "../Table/Table"
 import Button from "../Button/Button"
 import Checkbox from "../Checkbox/Checkbox"
 import { setOrdersList } from "../../store/ordersListStore/actions"
-import { getLocalStorageData } from "../../utils/localStorage"
 import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import { ReactComponent as EnableSvg } from "../../assets/icons/enable.svg"
 import { ReactComponent as ChangeSvg } from "../../assets/icons/change.svg"
@@ -21,7 +20,7 @@ const OrderList = () => {
   )
 
   useEffect(() => {
-    dispatch(setOrdersList(getLocalStorageData("token"), "order"))
+    dispatch(setOrdersList("order"))
   }, [])
 
   const columnConfig = [

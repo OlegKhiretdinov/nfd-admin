@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import Button from "../Button/Button"
 import Table from "../Table/Table"
 import { setCarsList } from "../../store/carsListStore/actions"
-import { getLocalStorageData } from "../../utils/localStorage"
 import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import defaultCar from "../../assets/img/default_car.png"
 import cls from "./CarList.module.scss"
@@ -15,7 +14,7 @@ const CarsList = () => {
   const { carsPageCount, carsList } = useSelector(({ carsList }) => carsList)
 
   useEffect(() => {
-    dispatch(setCarsList(getLocalStorageData("token"), "car"))
+    dispatch(setCarsList("car"))
   }, [])
 
   const columnConfig = [
@@ -54,7 +53,7 @@ const CarsList = () => {
     {
       key: "categoryId",
       columnHeader: "Категория",
-      contentRender: (item) => item.categoryId.name,
+      contentRender: (item) => item.categoryId?.name,
     },
     {
       key: "colors",

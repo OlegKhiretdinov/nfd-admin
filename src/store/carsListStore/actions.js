@@ -18,9 +18,9 @@ const setCarsPageCount = (carsPageCount) => ({
 })
 
 export const setCarsList =
-  (token, table, offset = 75, filters = "") =>
+  (table, page, filters = "") =>
   async (dispatch) => {
-    const response = await requestTableData(token, table, offset, filters)
+    const response = await requestTableData(table, page, filters)
     dispatch(setCarsListData(response.data))
     dispatch(setCarsPageCount(Math.ceil(response.count / tableRowLimit)))
   }

@@ -6,7 +6,6 @@ import Profile from "../Profile/Profile"
 import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import { setMessage, setMessageType } from "../../store/messageStore/actions"
 import { TMessageType } from "../../utils/const"
-import { getLocalStorageData } from "../../utils/localStorage"
 
 const RateTypeProfile = () => {
   const navigate = useNavigate()
@@ -14,8 +13,6 @@ const RateTypeProfile = () => {
 
   const dispatch = useDispatch()
   const { editorData } = useSelector(({ editorStore }) => editorStore)
-
-  const token = getLocalStorageData("token")
 
   const [name, setName] = useState()
   const [unit, setUnit] = useState()
@@ -46,7 +43,7 @@ const RateTypeProfile = () => {
     const data = { name, unit }
     const method = rateTypeId ? "PUT" : "POST"
 
-    requestEditEntity(token, "rateType", method, data, rateTypeId)
+    requestEditEntity("rateType", method, data, rateTypeId)
       .then((response) => response.json())
       .then((data) => {
         !rateTypeId && navigate(`/admin/rate-type-profile/${data.data.id}`)
@@ -64,7 +61,7 @@ const RateTypeProfile = () => {
   }, [editorData, rateTypeId])
 
   const handleDeleteCategory = useCallback(() => {
-    requestDeleteEntity(token, "rateType", rateTypeId)
+    requestDeleteEntity("rateType", rateTypeId)
       .then(() => {
         dispatch(setMessage(`Успех! Тип тарифа удален`))
         dispatch(setMessageType(TMessageType.success))
@@ -74,7 +71,7 @@ const RateTypeProfile = () => {
         dispatch(setMessageType(TMessageType.error))
       })
     navigate("/admin/rate-types")
-  }, [rateTypeId, token])
+  }, [rateTypeId])
 
   return (
     <Profile
