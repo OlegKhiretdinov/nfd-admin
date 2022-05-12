@@ -17,8 +17,13 @@ const setPointsPageCount = (pointsPageCount) => ({
   pointsPageCount,
 })
 
-export const setPointsList = (table, page) => async (dispatch) => {
-  const response = await requestTableData(table, page)
+export const setPointsList = (table, page, filter) => async (dispatch) => {
+  const response = await requestTableData(table, page, filter)
   dispatch(setPointsListData(response.data))
   dispatch(setPointsPageCount(Math.ceil(response.count / tableRowLimit)))
 }
+
+export const setPointsFilter = (pointsFilter) => ({
+  type: type.SET_POINTS_FILTER,
+  pointsFilter,
+})

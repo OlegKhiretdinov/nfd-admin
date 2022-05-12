@@ -22,7 +22,7 @@ const CarsList = () => {
   ] = useSelector(({ carsList, carTypesStore }) => [carsList, carTypesStore])
 
   useEffect(() => {
-    dispatch(setCarTypes("category"))
+    dispatch(setCarTypes())
   }, [])
 
   useEffect(() => {

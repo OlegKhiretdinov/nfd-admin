@@ -45,7 +45,7 @@ const CarProfile = () => {
   }, [carId])
 
   useEffect(() => {
-    dispatch(setCarTypes("category"))
+    dispatch(setCarTypes())
   }, [])
 
   const setInitialState = () => {

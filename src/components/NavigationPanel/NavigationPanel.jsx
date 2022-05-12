@@ -26,6 +26,11 @@ const navigationConfig = [
     icon: <ListSvg />,
   },
   {
+    title: "Категории",
+    link: "/admin/categories",
+    icon: <ListSvg />,
+  },
+  {
     title: "Карточка автомобиля",
     link: "/admin/car-profile",
     icon: <EditSvg />,

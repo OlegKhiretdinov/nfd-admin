@@ -4,6 +4,7 @@ const initialState = {
   pointsPage: 0,
   pointsPageCount: 0,
   pointsList: [],
+  pointsFilter: "",
 }
 
 const pointsListReducer = (state = initialState, action) => {
@@ -14,6 +15,8 @@ const pointsListReducer = (state = initialState, action) => {
       return { ...state, pointsList: action.pointsList }
     case type.SET_POINTS_PAGE_COUNT:
       return { ...state, pointsPageCount: action.pointsPageCount }
+    case type.SET_POINTS_FILTER:
+      return { ...state, pointsFilter: action.pointsFilter }
     default:
       return state
   }
