@@ -64,12 +64,12 @@ const RateTypeProfile = () => {
       .then(() => {
         dispatch(setMessage(`Успех! Тип тарифа удален`))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/rate-types")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить категорию"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/rate-types")
   }, [rateTypeId])
 
   return (

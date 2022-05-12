@@ -60,6 +60,10 @@ export const requestEditEntity = (table, method, data, id) => {
     },
     body: JSON.stringify(data),
   })
+    .then((response) => response.json())
+    .catch(() => {
+      throw new Error()
+    })
 }
 
 export const requestDeleteEntity = (table, id) => {
@@ -71,4 +75,8 @@ export const requestDeleteEntity = (table, id) => {
       Authorization: `Bearer ${token}`,
     },
   })
+    .then((response) => response.json())
+    .catch(() => {
+      throw new Error()
+    })
 }

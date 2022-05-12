@@ -78,12 +78,12 @@ const RateProfile = () => {
       .then(() => {
         dispatch(setMessage(`Успех! Тариф удален`))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/rates")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить тариф"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/rates")
   }, [rateId])
 
   return (

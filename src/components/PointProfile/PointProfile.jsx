@@ -96,12 +96,12 @@ const PointProfile = () => {
       .then(() => {
         dispatch(setMessage("Успех! Пункт проката удален"))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/points")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/points")
   }, [pointId])
 
   return (

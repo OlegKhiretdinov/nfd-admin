@@ -57,12 +57,12 @@ const CityProfile = () => {
       .then(() => {
         dispatch(setMessage(`Успех! Город удален`))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/cities")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить город"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/cities")
   }, [cityId])
 
   return (

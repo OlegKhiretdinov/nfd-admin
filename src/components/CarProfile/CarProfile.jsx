@@ -173,12 +173,12 @@ const CarProfile = () => {
       .then(() => {
         dispatch(setMessage("Успех! Машина удалена"))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/cars")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/cars")
   }
 
   const getTypeName = (id) => {
