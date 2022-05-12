@@ -1,14 +1,10 @@
 @import "../../styles/const.scss";
 
-//filter
 .filters {
-  padding: 16px 21px 14px;
-  border-bottom: 1px solid $gray_light;
-}
-
-.form {
   display: flex;
   flex-wrap: wrap;
+  padding: 16px 21px 14px;
+  border-bottom: 1px solid $gray_light;
 }
 
 .fieldWrapper {

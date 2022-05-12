@@ -148,105 +148,103 @@ const CarsList = () => {
       <h1 className={cls.title}>Список авто</h1>
       <div className={cls.wrapper}>
         <div className={cls.filters}>
-          <form className={cls.form}>
-            <div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <select
-                  className={cls.filterField}
-                  defaultValue={0}
-                  onChange={handleChangeCategory}
-                >
-                  <option value={""} key={"default"}>
-                    Выбрать категорию
-                  </option>
-                  {carTypes?.map((type) => (
-                    <option
-                      value={type.id}
-                      key={type.id}
-                      selected={type.id === filterCategory}
-                    >
-                      {type.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <select
-                  className={cls.filterField}
-                  defaultValue={""}
-                  onChange={handleSortByPrice}
-                >
-                  <option key={"default"} value={""}>
-                    Сортировка по цене
-                  </option>
+          <div>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <select
+                className={cls.filterField}
+                defaultValue={0}
+                onChange={handleChangeCategory}
+              >
+                <option value={""} key={"default"}>
+                  Выбрать категорию
+                </option>
+                {carTypes?.map((type) => (
                   <option
-                    value="minAsc"
-                    key="minAsc"
-                    selected={sortByPrice === "minAsc"}
+                    value={type.id}
+                    key={type.id}
+                    selected={type.id === filterCategory}
                   >
-                    Мин цена(по возрастанию)
+                    {type.name}
                   </option>
-                  <option
-                    value="minDsc"
-                    key="minDsc"
-                    selected={sortByPrice === "minDsc"}
-                  >
-                    Мин цена(по убыванию)
-                  </option>
-                  <option
-                    value="maxAsc"
-                    key="maxAsc"
-                    selected={sortByPrice === "maxAsc"}
-                  >
-                    Макс цена(по возрастанию)
-                  </option>
-                  <option
-                    value="maxDsc"
-                    key="maxDsc"
-                    selected={sortByPrice === "maxDsc"}
-                  >
-                    Макс цена(по убыванию)
-                  </option>
-                </select>
-              </div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <select
-                  className={cls.filterField}
-                  defaultValue={""}
-                  onChange={handleSortByName}
-                >
-                  <option key={"default"} value={""}>
-                    Сортировка по названию
-                  </option>
-                  <option
-                    value="nameAsc"
-                    key="nameAsc"
-                    selected={sortByName === "nameAsc"}
-                  >
-                    По названию(А - Я)
-                  </option>
-                  <option
-                    value="nameDsc"
-                    key="nameDsc"
-                    selected={sortByName === "nameDsc"}
-                  >
-                    По названию(Я - А)
-                  </option>
-                </select>
-              </div>
+                ))}
+              </select>
             </div>
-            <div className={cls.buttons}>
-              <Button text={"Сбросить"} type="reset" onClick={resetFilter} />
-              <Button
-                text={"Применить"}
-                customStyle={cls.button}
-                onClick={applyFilter}
-              />
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <select
+                className={cls.filterField}
+                defaultValue={""}
+                onChange={handleSortByPrice}
+              >
+                <option key={"default"} value={""}>
+                  Сортировка по цене
+                </option>
+                <option
+                  value="minAsc"
+                  key="minAsc"
+                  selected={sortByPrice === "minAsc"}
+                >
+                  Мин цена(по возрастанию)
+                </option>
+                <option
+                  value="minDsc"
+                  key="minDsc"
+                  selected={sortByPrice === "minDsc"}
+                >
+                  Мин цена(по убыванию)
+                </option>
+                <option
+                  value="maxAsc"
+                  key="maxAsc"
+                  selected={sortByPrice === "maxAsc"}
+                >
+                  Макс цена(по возрастанию)
+                </option>
+                <option
+                  value="maxDsc"
+                  key="maxDsc"
+                  selected={sortByPrice === "maxDsc"}
+                >
+                  Макс цена(по убыванию)
+                </option>
+              </select>
             </div>
-          </form>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <select
+                className={cls.filterField}
+                defaultValue={""}
+                onChange={handleSortByName}
+              >
+                <option key={"default"} value={""}>
+                  Сортировка по названию
+                </option>
+                <option
+                  value="nameAsc"
+                  key="nameAsc"
+                  selected={sortByName === "nameAsc"}
+                >
+                  По названию(А - Я)
+                </option>
+                <option
+                  value="nameDsc"
+                  key="nameDsc"
+                  selected={sortByName === "nameDsc"}
+                >
+                  По названию(Я - А)
+                </option>
+              </select>
+            </div>
+          </div>
+          <div className={cls.buttons}>
+            <Button text={"Сбросить"} type="reset" onClick={resetFilter} />
+            <Button
+              text={"Применить"}
+              customStyle={cls.button}
+              onClick={applyFilter}
+            />
+          </div>
         </div>
         <Table list={carsList} columnConfig={columnConfig} />
         <div className={cls.footer}>

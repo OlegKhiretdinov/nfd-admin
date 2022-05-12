@@ -144,27 +144,25 @@ const OrderList = () => {
       <h1 className={cls.title}>Заказы</h1>
       <div className={cls.wrapper}>
         <div className={cls.filters}>
-          <form className={cls.form}>
-            <div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <input className={cls.filterField} value="За неделю" />
-              </div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <input className={cls.filterField} value="Elantra" />
-              </div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <input className={cls.filterField} value=" Ульяновск" />
-              </div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <input className={cls.filterField} value=" В процессе" />
-              </div>
+          <div>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <input className={cls.filterField} value="За неделю" />
             </div>
-            <Button text={"Применить"} customStyle={cls.button} />
-          </form>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <input className={cls.filterField} value="Elantra" />
+            </div>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <input className={cls.filterField} value=" Ульяновск" />
+            </div>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <input className={cls.filterField} value=" В процессе" />
+            </div>
+          </div>
+          <Button text={"Применить"} customStyle={cls.button} />
         </div>
         <Table list={ordersList} columnConfig={columnConfig} />
         <div className={cls.footer}>

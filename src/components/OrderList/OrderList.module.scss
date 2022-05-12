@@ -1,10 +1,5 @@
 @import "../../styles/const.scss";
 
-.filters {
-  padding: 16px 21px 14px;
-  border-bottom: 1px solid $gray_light;
-}
-
 .title {
   margin-bottom: 28px;
 }
@@ -80,10 +75,11 @@
 }
 
 // filters
-
-.form {
+.filters {
   display: flex;
   flex-wrap: wrap;
+  padding: 16px 21px 14px;
+  border-bottom: 1px solid $gray_light;
 }
 
 .fieldWrapper {

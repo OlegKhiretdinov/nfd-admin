@@ -73,44 +73,42 @@ const CategoryList = () => {
     <PageLayout title="Категории">
       <>
         <div className={cls.filters}>
-          <form className={cls.form}>
-            <div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <select
-                  className={cls.filterField}
-                  defaultValue={""}
-                  onChange={handleSortByName}
+          <div>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <select
+                className={cls.filterField}
+                defaultValue={""}
+                onChange={handleSortByName}
+              >
+                <option key={"default"} value={""}>
+                  Сортировка по названию
+                </option>
+                <option
+                  value="nameAsc"
+                  key="nameAsc"
+                  selected={sortByName === "nameAsc"}
                 >
-                  <option key={"default"} value={""}>
-                    Сортировка по названию
-                  </option>
-                  <option
-                    value="nameAsc"
-                    key="nameAsc"
-                    selected={sortByName === "nameAsc"}
-                  >
-                    По названию(А - Я)
-                  </option>
-                  <option
-                    value="nameDsc"
-                    key="nameDsc"
-                    selected={sortByName === "nameDsc"}
-                  >
-                    По названию(Я - А)
-                  </option>
-                </select>
-              </div>
+                  По названию(А - Я)
+                </option>
+                <option
+                  value="nameDsc"
+                  key="nameDsc"
+                  selected={sortByName === "nameDsc"}
+                >
+                  По названию(Я - А)
+                </option>
+              </select>
             </div>
-            <div className={cls.buttons}>
-              <Button text={"Сбросить"} type="reset" onClick={resetFilter} />
-              <Button
-                text={"Применить"}
-                customStyle={cls.button}
-                onClick={applyFilter}
-              />
-            </div>
-          </form>
+          </div>
+          <div className={cls.buttons}>
+            <Button text={"Сбросить"} type="reset" onClick={resetFilter} />
+            <Button
+              text={"Применить"}
+              customStyle={cls.button}
+              onClick={applyFilter}
+            />
+          </div>
         </div>
         <Table list={carTypes} columnConfig={columnConfig} />
         <div className={cls.footer}>
