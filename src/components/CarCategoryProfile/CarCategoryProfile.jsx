@@ -45,7 +45,7 @@ const CarCategoryProfile = () => {
 
     requestEditEntity("category", method, data, categoryId)
       .then(() => {
-        !categoryId && navigate(`/admin/categories`)
+        navigate(`/admin/categories`)
         dispatch(setMessage(`Успех! Категория ${name} сохранена`))
         dispatch(setMessageType(TMessageType.success))
       })

@@ -31,6 +31,11 @@ const navigationConfig = [
     icon: <ListSvg />,
   },
   {
+    title: "Города",
+    link: "/admin/cities",
+    icon: <ListSvg />,
+  },
+  {
     title: "Карточка автомобиля",
     link: "/admin/car-profile",
     icon: <EditSvg />,

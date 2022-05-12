@@ -59,7 +59,7 @@ const RateProfile = () => {
 
     requestEditEntity("rate", method, data, rateId)
       .then(() => {
-        !rateId && navigate(`/admin/rates`)
+        navigate(`/admin/rates`)
         dispatch(setMessage("Успех! Тариф сохранен"))
         dispatch(setMessageType(TMessageType.success))
       })

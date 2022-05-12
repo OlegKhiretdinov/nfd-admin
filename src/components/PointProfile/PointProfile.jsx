@@ -36,7 +36,7 @@ const PointProfile = () => {
   }
 
   useEffect(() => {
-    dispatch(setCityList("city"))
+    dispatch(setCityList())
   }, [])
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const PointProfile = () => {
 
     requestEditEntity("point", method, data, pointId)
       .then(() => {
-        !pointId && navigate(`/admin/points`)
+        navigate(`/admin/points`)
         dispatch(setMessage("Успех! Пункт проката сохранен"))
         dispatch(setMessageType(TMessageType.success))
       })

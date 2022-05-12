@@ -45,7 +45,7 @@ const RateTypeProfile = () => {
 
     requestEditEntity("rateType", method, data, rateTypeId)
       .then(() => {
-        !rateTypeId && navigate(`/admin/rate-types`)
+        navigate(`/admin/rate-types`)
         dispatch(setMessage(`Успех! Тип тарифа ${name} сохранен`))
         dispatch(setMessageType(TMessageType.success))
       })

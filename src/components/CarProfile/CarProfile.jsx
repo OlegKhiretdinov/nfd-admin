@@ -154,7 +154,7 @@ const CarProfile = () => {
 
     requestEditEntity("car", method, data, carId)
       .then(() => {
-        !carId && navigate(`/admin/cars`)
+        navigate(`/admin/cars`)
         dispatch(setMessage("Успех! Машина сохранена"))
         dispatch(setMessageType(TMessageType.success))
       })
