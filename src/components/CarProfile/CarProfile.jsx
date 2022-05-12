@@ -154,7 +154,7 @@ const CarProfile = () => {
 
     requestEditEntity("car", method, data, carId)
       .then(() => {
-        !carId && navigate(`/admin/car-profile`)
+        !carId && navigate(`/admin/cars`)
         dispatch(setMessage("Успех! Машина сохранена"))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -178,7 +178,7 @@ const CarProfile = () => {
         dispatch(setMessage("Ошибка! Не удалось удалить"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/car-profile")
+    navigate("/admin/cars")
   }
 
   const getTypeName = (id) => {
