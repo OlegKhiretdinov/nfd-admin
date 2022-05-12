@@ -19,11 +19,15 @@ export const loginRequest = (username, password) => {
   }).then((response) => response.json())
 }
 
-export const requestTableData = (table, page) => {
+export const requestTableData = (table, page, filter) => {
   const token = getLocalStorageData("token")
   let requestUrl = `${baseUrl}db/${table}/`
   if (page !== undefined) {
-    requestUrl += `?limit=${tableRowLimit}&page=${page}/`
+    requestUrl += `?limit=${tableRowLimit}&page=${page}`
+  }
+
+  if (filter !== undefined) {
+    requestUrl += `${filter}`
   }
 
   return fetch(`${requestUrl}`, {
