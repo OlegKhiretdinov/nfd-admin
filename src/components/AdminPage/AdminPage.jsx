@@ -10,6 +10,7 @@ import { setAuthToken } from "../../store/authStore/actions"
 import NavigationPanel from "../NavigationPanel/NavigationPanel"
 import cls from "./AdminPage.module.scss"
 import { Outlet } from "react-router-dom"
+import Message from "../Message/Message"
 
 const AdminPage = () => {
   const dispatch = useDispatch()
@@ -36,6 +37,7 @@ const AdminPage = () => {
       <div className={cls.main}>
         <Header />
         <div className={cls.content}>
+          <Message />
           <Outlet />
         </div>
         <Footer />
