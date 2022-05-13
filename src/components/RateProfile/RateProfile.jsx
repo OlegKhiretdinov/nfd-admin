@@ -32,7 +32,7 @@ const RateProfile = () => {
   }
 
   useEffect(() => {
-    dispatch(setRateTypes("rateType"))
+    dispatch(setRateTypes())
   }, [])
 
   useEffect(() => {

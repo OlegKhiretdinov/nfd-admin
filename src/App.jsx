@@ -12,6 +12,7 @@ import OrderStatusProfile from "./components/OrderStatusProfile/OrderStatusProfi
 import PointList from "./components/PointList/PointList"
 import PointProfile from "./components/PointProfile/PointProfile"
 import RateProfile from "./components/RateProfile/RateProfile"
+import RateTypeList from "./components/RateTypeList/RateTypeList"
 import RateTypeProfile from "./components/RateTypeProfile/RateTypeProfile"
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="categories" element={<CategoryList />} />
           <Route path="cars" element={<CarsList />} />
           <Route path="cities" element={<CityList />} />
+          <Route path="rate-types" element={<RateTypeList />} />
           <Route path="car-profile/" element={<CarProfile />} />
           <Route path="car-profile/:carId" element={<CarProfile />} />
           <Route path="point-profile/" element={<PointProfile />} />

@@ -1,0 +1,55 @@
+@import "../../styles/const.scss";
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px 21px 14px;
+  border-bottom: 1px solid $gray_light;
+}
+
+.fieldWrapper {
+  display: inline-block;
+  position: relative;
+  margin-right: 15px;
+  background: white;
+}
+
+.fieldIcon {
+  position: absolute;
+  top: 11px;
+  right: 7px;
+  z-index: 5;
+}
+
+.filterField {
+  padding: 7px 19px 6px 14px;
+  min-width: 110px;
+  border: 1px solid #becad6;
+  border-radius: 4px;
+  color: #868e96;
+  font-size: 11px;
+  line-height: 13px;
+  appearance: none;
+  background: transparent;
+  position: relative;
+  z-index: 10;
+}
+
+.buttons {
+  margin-left: auto;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.button {
+  margin-left: 15px;
+}
+
+.footer {
+  padding: 21px;
+  border-top: 1px solid $gray_light;
+
+  div {
+    margin: 0 auto;
+  }
+}
