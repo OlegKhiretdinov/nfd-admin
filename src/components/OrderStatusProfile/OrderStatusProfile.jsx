@@ -38,7 +38,7 @@ const OrderStatusProfile = () => {
 
     requestEditEntity("orderStatus", method, data, orderStatusId)
       .then(() => {
-        !orderStatusId && navigate(`/admin/order-status-list`)
+        navigate(`/admin/order-status-list`)
         dispatch(setMessage(`Успех! Статус заказа ${name} сохранен`))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -57,12 +57,12 @@ const OrderStatusProfile = () => {
       .then(() => {
         dispatch(setMessage(`Успех! Статус заказа удален`))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/order-status-list")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить статус заказа"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/order-status-list")
   }, [orderStatusId])
 
   return (

@@ -45,7 +45,7 @@ const RateTypeProfile = () => {
 
     requestEditEntity("rateType", method, data, rateTypeId)
       .then(() => {
-        !rateTypeId && navigate(`/admin/rate-types`)
+        navigate(`/admin/rate-types`)
         dispatch(setMessage(`Успех! Тип тарифа ${name} сохранен`))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -64,18 +64,18 @@ const RateTypeProfile = () => {
       .then(() => {
         dispatch(setMessage(`Успех! Тип тарифа удален`))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/rate-types")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить категорию"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/rate-types")
   }, [rateTypeId])
 
   return (
     <Profile
-      title="Категория машины"
-      subTitle={`Профиль категории ${name ? name : ""}`}
+      title="Тип тарифа"
+      subTitle={`Профиль типа тарифа ${name ? name : ""}`}
       table="rateType"
       id={rateTypeId}
       resetState={resetState}

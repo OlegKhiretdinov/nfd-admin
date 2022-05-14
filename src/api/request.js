@@ -19,9 +19,18 @@ export const loginRequest = (username, password) => {
   }).then((response) => response.json())
 }
 
-export const requestTableData = (table, page) => {
+export const requestTableData = (table, page, filter) => {
   const token = getLocalStorageData("token")
-  return fetch(`${baseUrl}db/${table}/?limit=${tableRowLimit}&page=${page}`, {
+  let requestUrl = `${baseUrl}db/${table}/`
+  if (page !== undefined) {
+    requestUrl += `?limit=${tableRowLimit}&page=${page}`
+  }
+
+  if (filter !== undefined) {
+    requestUrl += `${filter}`
+  }
+
+  return fetch(`${requestUrl}`, {
     method: "GET",
     headers: {
       ...headers,
@@ -51,6 +60,10 @@ export const requestEditEntity = (table, method, data, id) => {
     },
     body: JSON.stringify(data),
   })
+    .then((response) => response.json())
+    .catch(() => {
+      throw new Error()
+    })
 }
 
 export const requestDeleteEntity = (table, id) => {
@@ -62,4 +75,8 @@ export const requestDeleteEntity = (table, id) => {
       Authorization: `Bearer ${token}`,
     },
   })
+    .then((response) => response.json())
+    .catch(() => {
+      throw new Error()
+    })
 }

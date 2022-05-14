@@ -1,0 +1,31 @@
+@import "../../styles/const.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: $blue;
+
+  span {
+    margin-right: 7px;
+    color: $blue;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .current {
+    min-width: 19px;
+    text-align: center;
+    padding: 2px;
+    box-sizing: border-box;
+    border-radius: 9px;
+    background: $blue;
+    color: white;
+    cursor: default;
+  }
+
+  .ellipsis {
+    cursor: default;
+  }
+}

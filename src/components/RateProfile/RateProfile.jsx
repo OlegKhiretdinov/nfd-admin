@@ -32,7 +32,7 @@ const RateProfile = () => {
   }
 
   useEffect(() => {
-    dispatch(setRateTypes("rateType"))
+    dispatch(setRateTypes())
   }, [])
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const RateProfile = () => {
 
     requestEditEntity("rate", method, data, rateId)
       .then(() => {
-        !rateId && navigate(`/admin/rates`)
+        navigate(`/admin/rates`)
         dispatch(setMessage("Успех! Тариф сохранен"))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -78,12 +78,12 @@ const RateProfile = () => {
       .then(() => {
         dispatch(setMessage(`Успех! Тариф удален`))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/rates")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить тариф"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/rates")
   }, [rateId])
 
   return (

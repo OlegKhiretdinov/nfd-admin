@@ -5,6 +5,7 @@ import Input from "../Input/Input"
 import Profile from "../Profile/Profile"
 import { requestDeleteEntity, requestEditEntity } from "../../api/request"
 import { setMessage, setMessageType } from "../../store/messageStore/actions"
+import { getEditorData, setEditorData } from "../../store/editorStore/actions"
 import { TMessageType } from "../../utils/const"
 
 const CityProfile = () => {
@@ -32,13 +33,22 @@ const CityProfile = () => {
     setInitialState(editorData)
   }, [editorData])
 
+  useEffect(() => {
+    if (cityId) {
+      dispatch(getEditorData("city", cityId))
+    } else {
+      dispatch(setEditorData({}))
+      resetState()
+    }
+  }, [cityId])
+
   const updateCity = () => {
     const data = { name: cityName }
     const method = cityId ? "PUT" : "POST"
 
     requestEditEntity("city", method, data, cityId)
       .then(() => {
-        !cityId && navigate(`/admin/cities`)
+        navigate(`/admin/cities`)
         dispatch(setMessage(`Успех! Город ${cityName} сохранен`))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -57,12 +67,12 @@ const CityProfile = () => {
       .then(() => {
         dispatch(setMessage(`Успех! Город удален`))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/cities")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить город"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/cities")
   }, [cityId])
 
   return (

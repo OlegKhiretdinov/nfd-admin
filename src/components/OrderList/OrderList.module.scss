@@ -1,10 +1,5 @@
 @import "../../styles/const.scss";
 
-.filters {
-  padding: 16px 21px 14px;
-  border-bottom: 1px solid $gray_light;
-}
-
 .title {
   margin-bottom: 28px;
 }
@@ -79,33 +74,12 @@
   }
 }
 
-// pagination
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 15px;
-  color: $blue;
-  a,
-  span {
-    margin-right: 7px;
-  }
-  .current {
-    min-width: 19px;
-    text-align: center;
-    padding: 2px;
-    box-sizing: border-box;
-    border-radius: 9px;
-    background: $blue;
-    color: white;
-  }
-}
-
 // filters
-
-.form {
+.filters {
   display: flex;
   flex-wrap: wrap;
+  padding: 16px 21px 14px;
+  border-bottom: 1px solid $gray_light;
 }
 
 .fieldWrapper {
