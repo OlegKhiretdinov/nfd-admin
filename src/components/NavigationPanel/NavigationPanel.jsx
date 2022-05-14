@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import classNames from "classnames"
 import { getScreenType } from "../../utils/utils"
 import cls from "./NavigationPanel.module.scss"
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg"
@@ -10,9 +11,9 @@ import MenuTrigger from "../MenuTrigger/MenuTriger"
 
 const navigationConfig = [
   {
-    title: "Карточка автомобиля",
-    link: "/admin/car-profile",
-    icon: <EditSvg />,
+    title: "Заказы",
+    link: "/admin/orders",
+    icon: <OrderSvg />,
   },
   {
     title: "Список авто",
@@ -20,14 +21,44 @@ const navigationConfig = [
     icon: <ListSvg />,
   },
   {
-    title: "Заказы",
-    link: "/admin/orders",
-    icon: <OrderSvg />,
-  },
-  {
     title: "Пункты проката",
     link: "/admin/points",
-    icon: <OrderSvg />,
+    icon: <ListSvg />,
+  },
+  {
+    title: "Карточка автомобиля",
+    link: "/admin/car-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка пункта проката",
+    link: "/admin/point-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка категории",
+    link: "/admin/category-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка города",
+    link: "/admin/city-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка типа тарифа",
+    link: "/admin/rate-type-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка тарифа",
+    link: "/admin/rate-profile",
+    icon: <EditSvg />,
+  },
+  {
+    title: "Карточка статуса заказа",
+    link: "/admin/order-status-profile",
+    icon: <EditSvg />,
   },
 ]
 
@@ -46,6 +77,9 @@ const NavigationPanel = () => {
     }
   }, [handelResize])
 
+  const getLinkClass = (isActive) =>
+    classNames(cls.link, { [cls.activeLink]: isActive })
+
   const navPanel = useMemo(
     () => (
       <div className={cls.wrapper}>
@@ -56,10 +90,16 @@ const NavigationPanel = () => {
         <div>
           {navigationConfig.map((item) => (
             <div key={item.link}>
-              <Link className={cls.link} to={item.link}>
+              <NavLink
+                className={({ isActive }) => getLinkClass(isActive)}
+                to={item.link}
+                onClick={() => {
+                  setIsShowMenu(false)
+                }}
+              >
                 {item.icon}
                 {item.title}
-              </Link>
+              </NavLink>
             </div>
           ))}
         </div>
