@@ -26,6 +26,21 @@ const navigationConfig = [
     icon: <ListSvg />,
   },
   {
+    title: "Категории",
+    link: "/admin/categories",
+    icon: <ListSvg />,
+  },
+  {
+    title: "Города",
+    link: "/admin/cities",
+    icon: <ListSvg />,
+  },
+  {
+    title: "Типы тарифов",
+    link: "/admin/rate-types",
+    icon: <ListSvg />,
+  },
+  {
     title: "Карточка автомобиля",
     link: "/admin/car-profile",
     icon: <EditSvg />,

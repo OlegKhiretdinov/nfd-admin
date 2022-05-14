@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux"
 import Table from "../Table/Table"
 import Button from "../Button/Button"
 import Checkbox from "../Checkbox/Checkbox"
-import { setOrdersList } from "../../store/ordersListStore/actions"
+import {
+  setOrdersList,
+  setOrdersPage,
+} from "../../store/ordersListStore/actions"
 import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
 import { ReactComponent as EnableSvg } from "../../assets/icons/enable.svg"
 import { ReactComponent as ChangeSvg } from "../../assets/icons/change.svg"
@@ -11,17 +14,22 @@ import { ReactComponent as CancelSvg } from "../../assets/icons/cancel.svg"
 import defaultCar from "../../assets/img/default_car.png"
 import cls from "./OrderList.module.scss"
 import { dateFormat } from "../../utils/const"
+import Pagination from "../Pagination/Pagination"
 
 const OrderList = () => {
   const dispatch = useDispatch()
 
-  const { orderPageCount, ordersList } = useSelector(
+  const { orderPageCount, ordersList, ordersPage } = useSelector(
     ({ ordersList }) => ordersList
   )
 
   useEffect(() => {
-    dispatch(setOrdersList("order"))
-  }, [])
+    dispatch(setOrdersList("order", ordersPage))
+  }, [ordersPage])
+
+  const paginationClick = (page) => {
+    dispatch(setOrdersPage(page - 1))
+  }
 
   const columnConfig = [
     {
@@ -136,41 +144,33 @@ const OrderList = () => {
       <h1 className={cls.title}>Заказы</h1>
       <div className={cls.wrapper}>
         <div className={cls.filters}>
-          <form className={cls.form}>
-            <div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <input className={cls.filterField} value="За неделю" />
-              </div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <input className={cls.filterField} value="Elantra" />
-              </div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <input className={cls.filterField} value=" Ульяновск" />
-              </div>
-              <div className={cls.fieldWrapper}>
-                <SelectSvg className={cls.fieldIcon} />
-                <input className={cls.filterField} value=" В процессе" />
-              </div>
+          <div>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <input className={cls.filterField} value="За неделю" />
             </div>
-            <Button text={"Применить"} customStyle={cls.button} />
-          </form>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <input className={cls.filterField} value="Elantra" />
+            </div>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <input className={cls.filterField} value=" Ульяновск" />
+            </div>
+            <div className={cls.fieldWrapper}>
+              <SelectSvg className={cls.fieldIcon} />
+              <input className={cls.filterField} value=" В процессе" />
+            </div>
+          </div>
+          <Button text={"Применить"} customStyle={cls.button} />
         </div>
         <Table list={ordersList} columnConfig={columnConfig} />
         <div className={cls.footer}>
-          <div className={cls.pagination}>
-            <a href="#">{"«"}</a>
-            <a href="#">1</a>
-            <span>...</span>
-            <a href="#">4</a>
-            <span className={cls.current}>5</span>
-            <a href="#">6</a>
-            <span>...</span>
-            <a href="#">{orderPageCount || null}</a>
-            <a href="#">{"»"}</a>
-          </div>
+          <Pagination
+            pageCount={orderPageCount}
+            current={ordersPage + 1}
+            clickHandler={paginationClick}
+          />
         </div>
       </div>
     </>

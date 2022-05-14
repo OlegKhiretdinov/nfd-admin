@@ -1,8 +1,10 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom"
 import AdminPage from "./components/AdminPage/AdminPage"
 import CarCategoryProfile from "./components/CarCategoryProfile/CarCategoryProfile"
 import CarProfile from "./components/CarProfile/CarProfile"
 import CarsList from "./components/CarsList/CarsList"
+import CategoryList from "./components/CategoryList/CategoryList"
+import CityList from "./components/CityList/CityList"
 import CityProfile from "./components/CityProfile/CityProfile"
 import ErrorPage from "./components/ErrorPage/ErrorPage"
 import OrderList from "./components/OrderList/OrderList"
@@ -10,18 +12,22 @@ import OrderStatusProfile from "./components/OrderStatusProfile/OrderStatusProfi
 import PointList from "./components/PointList/PointList"
 import PointProfile from "./components/PointProfile/PointProfile"
 import RateProfile from "./components/RateProfile/RateProfile"
+import RateTypeList from "./components/RateTypeList/RateTypeList"
 import RateTypeProfile from "./components/RateTypeProfile/RateTypeProfile"
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/admin" />} />
         <Route path="admin" element={<AdminPage />}>
           <Route path="/admin" element={<Navigate to="/admin/orders" />} />
           <Route path="orders" element={<OrderList />} />
           <Route path="points" element={<PointList />} />
+          <Route path="categories" element={<CategoryList />} />
           <Route path="cars" element={<CarsList />} />
+          <Route path="cities" element={<CityList />} />
+          <Route path="rate-types" element={<RateTypeList />} />
           <Route path="car-profile/" element={<CarProfile />} />
           <Route path="car-profile/:carId" element={<CarProfile />} />
           <Route path="point-profile/" element={<PointProfile />} />
@@ -52,7 +58,7 @@ const App = () => {
         </Route>
         <Route path="*" element={<Navigate to="/admin" />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

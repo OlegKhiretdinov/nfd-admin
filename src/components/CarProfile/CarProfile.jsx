@@ -45,7 +45,7 @@ const CarProfile = () => {
   }, [carId])
 
   useEffect(() => {
-    dispatch(setCarTypes("category"))
+    dispatch(setCarTypes())
   }, [])
 
   const setInitialState = () => {
@@ -154,7 +154,7 @@ const CarProfile = () => {
 
     requestEditEntity("car", method, data, carId)
       .then(() => {
-        !carId && navigate(`/admin/car-profile`)
+        navigate(`/admin/cars`)
         dispatch(setMessage("Успех! Машина сохранена"))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -173,12 +173,12 @@ const CarProfile = () => {
       .then(() => {
         dispatch(setMessage("Успех! Машина удалена"))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/cars")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/car-profile")
   }
 
   const getTypeName = (id) => {

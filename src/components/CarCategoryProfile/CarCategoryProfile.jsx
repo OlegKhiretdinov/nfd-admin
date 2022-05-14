@@ -45,7 +45,7 @@ const CarCategoryProfile = () => {
 
     requestEditEntity("category", method, data, categoryId)
       .then(() => {
-        !categoryId && navigate(`/admin/categories`)
+        navigate(`/admin/categories`)
         dispatch(setMessage(`Успех! Категория ${name} сохранена`))
         dispatch(setMessageType(TMessageType.success))
       })
@@ -64,12 +64,12 @@ const CarCategoryProfile = () => {
       .then(() => {
         dispatch(setMessage(`Успех! Категория удалена`))
         dispatch(setMessageType(TMessageType.success))
+        navigate("/admin/categories")
       })
       .catch(() => {
         dispatch(setMessage("Ошибка! Не удалось удалить категорию"))
         dispatch(setMessageType(TMessageType.error))
       })
-    navigate("/admin/categories")
   }, [categoryId])
 
   return (

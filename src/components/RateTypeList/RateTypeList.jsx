@@ -6,55 +6,34 @@ import Button from "../Button/Button"
 import PageLayout from "../PageLayout/PageLayout"
 import Pagination from "../Pagination/Pagination"
 import {
-  setPointsFilter,
-  setPointsList,
-  setPointsPage,
-} from "../../store/PointListStore/actions"
-import { setCityList } from "../../store/cityListStore/actions"
+  setRateTypes,
+  setRateTypesFilter,
+  setRateTypesPage,
+} from "../../store/rateTypesStore/action"
 import { ReactComponent as SelectSvg } from "../../assets/icons/select.svg"
-import cls from "./PointList.module.scss"
+import cls from "./RateTypeList.module.scss"
 
-const PointList = () => {
+const RateTypeList = () => {
   const dispatch = useDispatch()
-
-  const [
-    { pointsPageCount, pointsList, pointsPage, pointsFilter },
-    { cityList },
-  ] = useSelector(({ pointsList, cityListStore }) => [
-    pointsList,
-    cityListStore,
-  ])
+  const { rateTypes, rateTypesPage, rateTypesPageCount, rateTypesFilter } =
+    useSelector(({ rateTypesStore }) => rateTypesStore)
 
   useEffect(() => {
-    dispatch(setCityList())
-  }, [])
-
-  useEffect(() => {
-    dispatch(setPointsList("point", pointsPage, pointsFilter))
-  }, [pointsPage, pointsFilter])
+    dispatch(setRateTypes(rateTypesPage, rateTypesFilter))
+  }, [rateTypesPage, rateTypesFilter])
 
   const [sortByName, setSortByName] = useState()
-  const [filterCity, setFilterCity] = useState()
 
   const handleSortByName = useCallback((e) => {
     setSortByName(e.target.value)
   }, [])
 
-  const handleChangeCity = useCallback((e) => {
-    setFilterCity(e.target.value)
-  }, [])
-
   const resetFilter = useCallback(() => {
     setSortByName("")
-    setFilterCity("")
   }, [])
 
   const applyFilter = useCallback(() => {
     let filter = ""
-
-    if (filterCity) {
-      filter += `&cityId[id]=${filterCity}`
-    }
 
     if (sortByName) {
       filter += `&sort`
@@ -66,12 +45,12 @@ const PointList = () => {
       }
     }
 
-    dispatch(setPointsPage(0))
-    dispatch(setPointsFilter(filter))
-  }, [sortByName, filterCity])
+    dispatch(setRateTypesPage(0))
+    dispatch(setRateTypesFilter(filter))
+  }, [sortByName])
 
   const paginationClick = (page) => {
-    dispatch(setPointsPage(page - 1))
+    dispatch(setRateTypesPage(page - 1))
   }
 
   const columnConfig = [
@@ -79,23 +58,18 @@ const PointList = () => {
       key: "name",
       columnHeader: "Название",
       contentRender: (item) => (
-        <Link to={`/admin/point-profile/${item.id}`}>{item.name}</Link>
+        <Link to={`/admin/rate-type-profile/${item.id}`}>{item.name}</Link>
       ),
     },
     {
-      key: "city",
-      columnHeader: "Город",
-      contentRender: (item) => (item.cityId ? item.cityId.name : null),
-    },
-    {
-      key: "address",
-      columnHeader: "Адрес",
-      contentRender: (item) => item.address,
+      key: "unit",
+      columnHeader: "Единица измерения",
+      contentRender: (item) => (item.unit ? item.unit : null),
     },
   ]
 
   return (
-    <PageLayout title={"Пункты проката"}>
+    <PageLayout title={"Типы тарифов"}>
       <>
         <div className={cls.filters}>
           <div>
@@ -125,27 +99,6 @@ const PointList = () => {
                 </option>
               </select>
             </div>
-            <div className={cls.fieldWrapper}>
-              <SelectSvg className={cls.fieldIcon} />
-              <select
-                className={cls.filterField}
-                defaultValue={0}
-                onChange={handleChangeCity}
-              >
-                <option value={""} key={"default"}>
-                  Выбрать город
-                </option>
-                {cityList?.map((city) => (
-                  <option
-                    value={city.id}
-                    key={city.id}
-                    selected={city.id === filterCity}
-                  >
-                    {city.name}
-                  </option>
-                ))}
-              </select>
-            </div>
           </div>
           <div className={cls.buttons}>
             <Button text={"Сбросить"} type="reset" onClick={resetFilter} />
@@ -156,11 +109,11 @@ const PointList = () => {
             />
           </div>
         </div>
-        <Table list={pointsList} columnConfig={columnConfig} />
+        <Table list={rateTypes} columnConfig={columnConfig} />
         <div className={cls.footer}>
           <Pagination
-            pageCount={pointsPageCount}
-            current={pointsPage + 1}
+            pageCount={rateTypesPageCount}
+            current={rateTypesPage + 1}
             clickHandler={paginationClick}
           />
         </div>
@@ -169,4 +122,4 @@ const PointList = () => {
   )
 }
 
-export default PointList
+export default RateTypeList
